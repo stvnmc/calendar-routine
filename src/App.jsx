@@ -7,10 +7,12 @@ import LoginPage from "./page/LoginPage";
 import ProtectedRoute from "./ProtectedRouter";
 import RegisterPage from "./page/RegisterPage";
 import CreateRoutine from "./page/CreateRoutine";
+import NavBarMonth from "./components/infor/NavBarMonth";
 
 function App() {
   return (
     <BrowserRouter>
+      <NavBarMonth />
       <Routes>
         <Route path="/calendar-routine/register" element={<RegisterPage />} />
         <Route path="/calendar-routine/login" element={<LoginPage />} />

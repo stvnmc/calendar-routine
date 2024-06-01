@@ -15,8 +15,9 @@
 
 body {
   position: relative;
-  background-color: #b29d8a;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16'%3E%3Cg fill='%23382e24' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/%3E%3C/g%3E%3C/svg%3E");
+  background-color: #f2f5f7;
+  /* background-color: #b29d8a;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16'%3E%3Cg fill='%23382e24' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/%3E%3C/g%3E%3C/svg%3E"); */
   overflow-x: hidden;
 }
 
@@ -425,17 +426,7 @@ button {
   transform: scale(1.3);
 }
 
-/* ///////////////////////// page-top ////////////////////// */
-
-.page-top {
-  position: absolute;
-  width: 94vw;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 11vh;
-  padding: 0 3vw;
-}
+/* ///////////////////////// digital clock ////////////////////// */
 
 .digital-clock {
   position: relative;
@@ -522,26 +513,6 @@ button {
   100% {
     transform: translateY(-100%);
   }
-}
-
-.logout {
-  display: flex;
-  align-items: center;
-}
-
-.page-top .logo h1 {
-  font-size: 47px;
-  font-weight: bold;
-  color: rgb(41 39 39);
-}
-
-.logout button {
-  height: 42px;
-  min-width: 103px;
-  margin: 0 22px 1px;
-  font-size: 20px;
-  padding: 0 1%;
-  font-weight: 400;
 }
 
 /* ///////////////////// footer ///////////////////////// */
@@ -649,23 +620,45 @@ footer img {
 /*/////////////////// month ///////////////////////*/
 
 .main-container-month {
-  width: 100vw;
-  height: 708px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   font-size: 20px;
   color: rgb(245, 242, 242);
 }
 
 .container {
-  background-color: #e7ded5;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16'%3E%3Cg fill='%23382e24' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/%3E%3C/g%3E%3C/svg%3E");
+  background-color: #f2f5f7;
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16'%3E%3Cg fill='%23382e24' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/%3E%3C/g%3E%3C/svg%3E"); */
   display: flex;
   flex-direction: column;
 }
 
 .calendar {
-  width: 800px;
+  color: #20241c;
+  width: 47vw;
+  min-width: 496px;
+  margin: 30px 0;
+}
+
+.select-day-taks {
+  margin: 30px 0;
+  color: #20241c;
+  background: #b1adad;
+  width: 34vw;
+  height: 674px;
+  padding: 2% 3%;
+  min-width: 400px;
+  border-radius: 5px;
+  border: none;
+  border-right: 0.4vh solid #706b6b;
+  border-bottom: 0.4vh solid #706b6b;
+}
+
+.task-cont-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .top-bar-calendario {
@@ -709,12 +702,6 @@ footer img {
   color: #e2d1bd;
 }
 
-.month-chanceMonth {
-  display: flex;
-  justify-content: space-between;
-  color: #e2d1bd;
-}
-
 .date {
   display: flex;
   align-items: center;
@@ -731,43 +718,52 @@ footer img {
 }
 
 .icons-calendar button {
-  font-size: 2vw;
-  margin-left: 1vw;
-  width: 7vw;
-  height: 4vh;
+  font-size: 2em;
+  margin-left: 18px;
+  width: 96px;
+  height: 40px;
   color: #e2d1bd;
 }
 
 .days-of-week {
   display: grid;
   grid-template-columns: repeat(7, 14%);
-  height: 5.7vh;
+  height: 64px;
   border-radius: 5px;
   align-items: center;
+  justify-content: space-around;
 }
 
 .days-of-week h2 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-size: 1.4em;
 }
 
 .days {
   display: grid;
-  height: 80%;
+  height: 448px;
   gap: 0.3% 0.3%;
   grid-template-columns: repeat(7, 14%);
   grid-template-rows: repeat(6, 16%);
 }
 
 .containers {
+  cursor: pointer;
   position: relative;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #f5f5ef;
   border-radius: 0.5em;
   border: none;
   border-bottom: 0.3vh solid #575654;
   border-right: 0.2vw solid #575654;
+}
+
+.containers h1 {
+  font-size: 1.5em;
 }
 
 .containers:hover {
@@ -776,11 +772,16 @@ footer img {
   border-right: 0.1vw solid #f1f1ef;
 }
 
+.containers.hover-day-select {
+  background: #aa917a;
+}
+
 .tasks {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  height: 7vh;
+  height: 606px;
+  margin-top: 45px;
 }
 
 .tasks::-webkit-scrollbar {
@@ -799,28 +800,55 @@ footer img {
   background: #222d28f3;
 }
 
+.icon-task-have {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .cont-tasks {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 0.5vh 0.9vw;
   border-bottom: 0.2vh solid #887e5e47;
 }
+
+.welcome-text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.welcome-text button {
+  width: 170px;
+  height: 48px;
+  font-size: 1em;
+}
+
+.welcome-text img {
+  width: 362px;
+  height: 359px;
+}
+
 .cont-tasks h2 {
-  width: 11vw;
-  font-size: 22px;
+  width: 89%;
+  font-size: 2em;
   overflow-wrap: break-word;
 }
 
 .icons-add-rutine button {
-  width: 1.4vw;
-  min-width: 23px;
-  height: 2.5vh;
-  margin-right: 0.3vw;
+  width: 56px;
+  height: 42px;
+  margin-right: 18px;
   border: none;
   border-bottom: 0.2vh solid #7a7676;
   border-right: 0.1vw solid #7a7676;
   border-radius: 2px;
-  background: #6e7a60cc;
+  background: #232423cc;
   color: #fff;
   transition: 1s;
 }
@@ -853,16 +881,22 @@ footer img {
 }
 
 .icons-add-rutine button svg {
-  font-size: 15px;
+  font-size: 1.9em;
   padding: 0 2%;
   transition: transform 1s ease;
 }
 
 .delete {
-  font-size: 1vw;
+  display: flex;
+  font-size: 1.3em;
   color: #222d28f3;
-  background: rgba(59, 175, 123, 0);
+  background: rgb(217 219 218 / 44%);
   border: none;
+  width: 46px;
+  height: 38px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
 }
 
 .delete:hover svg {
@@ -872,9 +906,6 @@ footer img {
 .containers.next,
 .containers.former {
   background: #e1dbc1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .containers.next:hover,
@@ -888,18 +919,6 @@ footer img {
   width: 80%;
   height: 2px;
   margin-top: 6px;
-}
-
-.icons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.icons h1 {
-  font-size: 2vw;
-  padding: 0 2%;
-  margin-left: 0.4vw;
 }
 
 .create-task {
@@ -1032,7 +1051,7 @@ footer img {
 }
 
 .hour {
-  position: relative;
+  f: relative;
   overflow: hidden;
   padding: 0.5vh 0.6vw;
   color: #fff;
@@ -1372,17 +1391,6 @@ footer img {
   transform: rotate(136deg);
 }
 
-.day-task-rotuine .title-task {
-  width: 16vw;
-  display: flex;
-  align-items: center;
-  margin: 1vh 0 1vh 1vw;
-}
-
-.day-task-rotuine .title-task > h1:first-child {
-  font-size: 3vw;
-}
-
 /* /////////// create routine ////////////*/
 
 .cont-create {
@@ -1687,7 +1695,7 @@ footer img {
   width: 100%;
   height: 100%;
   background: linear-gradient(to right, #435c5c00, #a1a1a12f, #435c5c00);
-  position: absolute;
+  f: absolute;
   top: 0;
   left: -100%;
   animation: colorTransition 2s linear infinite;
@@ -1697,7 +1705,7 @@ footer img {
   width: 100%;
   height: 100%;
   background: linear-gradient(to right, #435c5c00, #2e2d2d27, #435c5c00);
-  position: absolute;
+  f: absolute;
   top: 0;
   left: -100%;
   animation: colorTransition 2s linear infinite;
