@@ -78,7 +78,7 @@ const TasksDay = ({
           </div>
         ) : (
           <div className="tasks">
-            {infoOfMonth[infoDay] ? (
+            {infoOfMonth[infoDay] && infoOfMonth[infoDay].length > 0 ? (
               <>
                 {infoOfMonth[infoDay]?.map((item, i) => (
                   <div key={i} className="cont-tasks">

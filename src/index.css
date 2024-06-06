@@ -15,7 +15,8 @@
 
 body {
   position: relative;
-  background-color: #f2f5f7;
+  background-color: #e2e3e4;
+  color: #0f0f0e;
   /* background-color: #b29d8a;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16'%3E%3Cg fill='%23382e24' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/%3E%3C/g%3E%3C/svg%3E"); */
   overflow-x: hidden;
@@ -432,7 +433,6 @@ button {
   position: relative;
   font-size: 1.6vw;
   padding: 0.5vh 1vw;
-  color: rgb(41 39 39);
   overflow: hidden;
 }
 
@@ -519,7 +519,7 @@ button {
 
 footer {
   width: 100vw;
-  height: 50vh;
+  height: 23vh;
   display: flex;
   align-items: flex-end;
 }
@@ -528,7 +528,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-color: #222d28;
+  background-color: #6e716f;
   width: 75vw;
   min-width: 400px;
   height: auto;
@@ -586,7 +586,7 @@ footer .contact div h2 {
 }
 
 footer .cont-img {
-  background-color: #222d28;
+  background-color: #6e716f;
   border-radius: 0 10vw 0 0;
   width: 20vw;
   min-width: 200px;
@@ -624,18 +624,15 @@ footer img {
   flex-wrap: wrap;
   justify-content: space-around;
   font-size: 20px;
-  color: rgb(245, 242, 242);
 }
 
 .container {
-  background-color: #f2f5f7;
   /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16'%3E%3Cg fill='%23382e24' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/%3E%3C/g%3E%3C/svg%3E"); */
   display: flex;
   flex-direction: column;
 }
 
 .calendar {
-  color: #20241c;
   width: 47vw;
   min-width: 496px;
   margin: 30px 0;
@@ -644,10 +641,10 @@ footer img {
 .select-day-taks {
   margin: 30px 0;
   color: #20241c;
-  background: #b1adad;
+  background: #a69583;
   width: 34vw;
   height: 674px;
-  padding: 2% 3%;
+  padding: 17px;
   min-width: 400px;
   border-radius: 5px;
   border: none;
@@ -705,6 +702,7 @@ footer img {
 .date {
   display: flex;
   align-items: center;
+  margin: 15px 0;
 }
 
 .month-chanceMonth h2 {
@@ -760,6 +758,7 @@ footer img {
   border: none;
   border-bottom: 0.3vh solid #575654;
   border-right: 0.2vw solid #575654;
+
 }
 
 .containers h1 {
@@ -854,7 +853,6 @@ footer img {
 }
 
 .containers:hover .icons-add-rutine button {
-  background: #92928f;
   border-bottom: 0.2vh solid #dad7d7;
   border-right: 0.1vw solid #dad7d7;
 }
@@ -967,9 +965,10 @@ footer img {
 .next-previous button,
 .icons-calendar button,
 .user-control button,
-.logout button {
+.logout button,
+.welcome-text button {
   color: #fff;
-  background-color: #817a6d;
+  background-color: #565554;
   border: none;
   border-radius: 4px;
   border-bottom: 0.2vh solid #c7c3c3;
@@ -1305,7 +1304,8 @@ footer img {
 }
 
 .title-routine button:hover,
-.logout button:hover {
+.logout button:hover,
+.welcome-text button:hover {
   background: rgb(213, 223, 219);
   color: #222d28f3;
   border-bottom: 1px solid rgb(25 38 32 / 22%);

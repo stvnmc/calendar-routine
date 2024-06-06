@@ -21,6 +21,8 @@ const DayContainer = ({
     localStorage.setItem("selectDay", dayNumber);
   };
 
+  if (infoOfMonth && infoOfMonth.length) console.log(infoOfMonth);
+
   return (
     <div
       className={`containers ${type} ${
@@ -31,7 +33,7 @@ const DayContainer = ({
     >
       {loadingMonth ? (
         <>
-          {infoOfMonth && type === "current" && (
+          {infoOfMonth && type === "current" && infoOfMonth.length > 0 && (
             <div className="icon-task-have">
               <BiCalendarEvent />
             </div>
