@@ -89,11 +89,11 @@ const Month = () => {
               {monthsNames[id1 - 1]} {id2}
             </h2>
             <div className="icons-calendar">
-              <button onClick={() => handleMonthChange(1)}>
-                <SlArrowDown />
-              </button>
               <button onClick={() => handleMonthChange(-1)}>
                 <SlArrowUp />
+              </button>
+              <button onClick={() => handleMonthChange(1)}>
+                <SlArrowDown />
               </button>
             </div>
           </div>

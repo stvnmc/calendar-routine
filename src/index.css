@@ -3,9 +3,7 @@
 :root {
   font-family: "Dosis", sans-serif;
   color-scheme: light dark;
-
   color: rgba(20, 19, 19, 0.87);
-  background-color: #242424;
 }
 
 * {
@@ -17,8 +15,7 @@ body {
   position: relative;
   background-color: #e2e3e4;
   color: #0f0f0e;
-  /* background-color: #b29d8a;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16'%3E%3Cg fill='%23382e24' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/%3E%3C/g%3E%3C/svg%3E"); */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16'%3E%3Cg fill='%23382e24' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/%3E%3C/g%3E%3C/svg%3E");
   overflow-x: hidden;
 }
 
@@ -53,8 +50,6 @@ button {
   color: rgba(249, 243, 243, 0.93);
   height: 208vh;
   width: 100vw;
-  background-color: #b29d8a;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16'%3E%3Cg fill='%23382e24' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .home::-webkit-scrollbar {
@@ -442,7 +437,7 @@ button {
 .linea-digital-right {
   position: absolute;
   content: "";
-  background-color: #ffffffce;
+  background-color: #424040ce;
 }
 
 .linea-digital {
@@ -519,7 +514,7 @@ button {
 
 footer {
   width: 100vw;
-  height: 23vh;
+  height: 400px;
   display: flex;
   align-items: flex-end;
 }
@@ -635,21 +630,24 @@ footer img {
 .calendar {
   width: 47vw;
   min-width: 496px;
-  margin: 30px 0;
+  padding: 20px;
 }
 
 .select-day-taks {
-  margin: 30px 0;
-  color: #20241c;
-  background: #a69583;
   width: 34vw;
-  height: 674px;
   padding: 17px;
-  min-width: 400px;
+  background: #a69583;
   border-radius: 5px;
   border: none;
   border-right: 0.4vh solid #706b6b;
   border-bottom: 0.4vh solid #706b6b;
+}
+
+.select-day-taks,
+.calendar {
+  margin: 30px 0;
+  height: 674px;
+  min-width: 400px;
 }
 
 .task-cont-header {
@@ -662,7 +660,7 @@ footer img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 10vh;
+  height: 112px;
   margin: 0 3vw;
 }
 
@@ -670,39 +668,89 @@ footer img {
   margin: 0 13vw 0 0;
 }
 
-.top-bar-calendario h2 {
-  width: auto;
-  margin-right: 2vw;
+.router {
+  display: flex;
+  width: 344px;
+  justify-content: space-between;
 }
 
-.top-bar-calendario h2,
-.container .digital-clock h1 {
-  font-size: 2vw;
-  color: rgb(41 39 39);
-}
-
-.user-control {
+.user-setting {
+  position: relative;
   display: flex;
   align-items: center;
+  width: 280px;
+  justify-content: space-between;
 }
 
-.user-control button {
+.user-setting h1 {
+  font-size: 2.5em;
+}
+
+.user-setting button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4vw;
-  min-width: 50px;
+  width: 55px;
   height: 4vh;
   margin-right: 1vw;
   border-radius: 2px;
   font-size: 25px;
-  color: #e2d1bd;
+}
+
+.user-setting.hover button {
+  border-bottom: 1px solid rgba(25, 38, 32, 0.952);
+  border-right: 1px solid rgba(25, 38, 32, 0.986);
+  background: rgba(103, 107, 105, 0.692);
+}
+
+.user-setting button svg {
+  transition: 1s;
+}
+
+.user-setting.hover button svg {
+  transform: rotate(200deg);
+}
+
+.setting {
+  position: absolute;
+  top: 44px;
+  right: 17px;
+  width: 202px;
+  height: 208px;
+  background: #d0cfce;
+  border-radius: 5px;
+  border: none;
+  border-right: 0.4vh solid #4e4e4e;
+  border-bottom: 0.4vh solid #4e4e4e;
+  overflow: hidden;
+}
+
+.setting h2 {
+  font-size: 1.8em;
+  height: 41px;
+  padding-left: 10px;
+  padding-top: 5px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.setting h2:hover {
+  background-color: #b8b6b6;
+}
+
+.setting .linea {
+  margin: auto;
 }
 
 .date {
   display: flex;
   align-items: center;
+  justify-content: space-around;
   margin: 15px 0;
+}
+
+.date h2 {
+  font-size: 2.6em;
 }
 
 .month-chanceMonth h2 {
@@ -718,7 +766,7 @@ footer img {
 .icons-calendar button {
   font-size: 2em;
   margin-left: 18px;
-  width: 96px;
+  width: 84px;
   height: 40px;
   color: #e2d1bd;
 }
@@ -758,7 +806,6 @@ footer img {
   border: none;
   border-bottom: 0.3vh solid #575654;
   border-right: 0.2vw solid #575654;
-
 }
 
 .containers h1 {
@@ -964,15 +1011,15 @@ footer img {
 .create-input,
 .next-previous button,
 .icons-calendar button,
-.user-control button,
+.user-setting button,
 .logout button,
 .welcome-text button {
   color: #fff;
   background-color: #565554;
   border: none;
   border-radius: 4px;
-  border-bottom: 0.2vh solid #c7c3c3;
-  border-right: 0.1vw solid #c7c3c3;
+  border-bottom: 2px solid #9b9183;
+  border-right: 2px solid #9b9183;
   transition: ease 1s;
 }
 
@@ -1378,8 +1425,7 @@ footer img {
 }
 
 .task-routine button:hover,
-.task-routine .none,
-.user-control button:hover {
+.task-routine .none {
   border-bottom: 1px solid rgb(25 38 32 / 22%);
   border-right: 1px solid rgb(25 38 32 / 22%);
   background: rgba(59, 175, 123, 0.176);
