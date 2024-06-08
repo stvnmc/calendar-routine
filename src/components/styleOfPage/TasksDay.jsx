@@ -11,7 +11,6 @@ const TasksDay = ({
   infoOfMonth,
   addTaskDay,
   deleteTaskDay,
-  goToPageDay,
 }) => {
   const [inputValue, setInputValue] = useState("");
   const [createTask, setCreateTask] = useState(false);
@@ -48,10 +47,6 @@ const TasksDay = ({
         <h1>Day: {infoDay}</h1>
         {type === "current" && (
           <div className="icons-add-rutine">
-            <button onClick={() => goToPageDay(infoDay)}>
-              <FaTasks />
-            </button>
-
             <button
               className={createTask ? "hover" : "none"}
               onClick={() => chanceCreateTask()}

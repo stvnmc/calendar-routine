@@ -20,9 +20,6 @@ const DayContainer = ({
     setDaySelect(dayNumber);
     localStorage.setItem("selectDay", dayNumber);
   };
-
-  if (infoOfMonth && infoOfMonth.length) console.log(infoOfMonth);
-
   return (
     <div
       className={`containers ${type} ${

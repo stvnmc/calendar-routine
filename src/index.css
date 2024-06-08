@@ -43,7 +43,6 @@ button {
 /* //////////////// Home /////////////////////////// */
 
 .home {
-  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -458,7 +457,7 @@ button {
 
 .linea-digital-right,
 .linea-digital-left {
-  width: 0.1vw;
+  width: 2px;
   height: 100%;
 }
 
@@ -656,6 +655,10 @@ footer img {
   justify-content: space-between;
 }
 
+.task-cont-header h1 {
+  font-weight: 600;
+}
+
 .top-bar-calendario {
   display: flex;
   justify-content: space-between;
@@ -672,6 +675,14 @@ footer img {
   display: flex;
   width: 344px;
   justify-content: space-between;
+}
+.router h1 {
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.router h1.hover {
+  text-decoration: underline;
 }
 
 .user-setting {
@@ -713,9 +724,9 @@ footer img {
 
 .setting {
   position: absolute;
-  top: 44px;
-  right: 17px;
-  width: 202px;
+  top: 6px;
+  right: -55px;
+  width: 185px;
   height: 208px;
   background: #d0cfce;
   border-radius: 5px;
@@ -731,6 +742,7 @@ footer img {
   padding-left: 10px;
   padding-top: 5px;
   transition: 0.5s;
+  font-weight: 400;
   cursor: pointer;
 }
 
@@ -751,6 +763,7 @@ footer img {
 
 .date h2 {
   font-size: 2.6em;
+  font-weight: 500;
 }
 
 .month-chanceMonth h2 {
@@ -785,6 +798,7 @@ footer img {
   white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 1.4em;
+  font-weight: 400;
 }
 
 .days {
@@ -810,6 +824,7 @@ footer img {
 
 .containers h1 {
   font-size: 1.5em;
+  font-weight: 400;
 }
 
 .containers:hover {
@@ -1026,9 +1041,6 @@ footer img {
 .cont-main-day {
   display: flex;
   height: 100vh;
-  background-color: #b29d8a;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16'%3E%3Cg fill='%23382e24' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/%3E%3C/g%3E%3C/svg%3E");
-
   width: 100vw;
   padding-left: 2vw;
   overflow-y: hidden;

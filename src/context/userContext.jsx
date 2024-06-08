@@ -25,6 +25,13 @@ export const UserProvider = ({ children }) => {
   const [errors, setErrors] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
+  const [location, setLocation] = useState("");
+  const [locationDate, setLocationDate] = useState(null);
+
+  useEffect(() => {
+    console.log(location);
+  }, [location]);
+
   const localStore = (name, accessToken) => {
     const newInfo = [{ name: name, accessCalendar: accessToken }];
     localStorage.setItem("Calendar", JSON.stringify(newInfo));
@@ -118,6 +125,10 @@ export const UserProvider = ({ children }) => {
         isAuthenticated,
         logout,
         setIsAuthenticated,
+        location,
+        setLocation,
+        setLocationDate,
+        locationDate,
       }}
     >
       {children}

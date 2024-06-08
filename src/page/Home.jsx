@@ -2,17 +2,20 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Grid from "../components/styleOfPage/Grid";
 import Table from "../components/styleOfPage/Table";
-
-import { FaGithub, FaInstagram } from "react-icons/fa";
-import DigitalClock from "../components/infor/DigitalClock";
 import Footer from "../components/infor/Footer";
+import { useUser } from "../context/userContext";
 
 const Home = () => {
   const month = new Date().getMonth();
   const year = new Date().getFullYear();
   const navigate = useNavigate();
+  const { setLocation } = useUser();
 
   const [style, setStyle] = useState(0);
+
+  useEffect(() => {
+    setLocation("home");
+  }, []);
 
   useEffect(() => {
     const timeout1 = setTimeout(() => {

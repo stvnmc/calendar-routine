@@ -27,13 +27,18 @@ const Month = () => {
     deleteTaskDay,
   } = useMonthData();
 
-  const { user } = useUser();
+  const { user, setLocation, setLocationDate } = useUser();
 
   useEffect(() => {
     getCalendar();
     getInfoTasksClandarar();
     getDaySeledt();
+    setLocation("month");
   }, [user, id1]);
+
+  useEffect(() => {
+    setLocationDate([id1, daySelect, id2]);
+  }, [daySelect]);
 
   const getDaySeledt = () => {
     const daySave = localStorage.getItem("selectDay");
@@ -65,12 +70,6 @@ const Month = () => {
     }
 
     const nuevaFecha = `/calendar-routine/month/${newId}/${newYear}`;
-    navigate(nuevaFecha);
-  };
-
-  const goToPageDay = (day) => {
-    setLoadingMonth(false);
-    const nuevaFecha = `/calendar-routine/m/${id1}/d/${day}/y/${id2}`;
     navigate(nuevaFecha);
   };
 
@@ -127,7 +126,6 @@ const Month = () => {
           infoOfMonth={infoOfMonth}
           deleteTaskDay={deleteTaskDay}
           type={"current"}
-          goToPageDay={goToPageDay}
         />
       </div>
       <Footer />

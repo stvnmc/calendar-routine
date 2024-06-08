@@ -41,19 +41,17 @@ const Day = () => {
     getRoutineDayTasks,
     setCurrentDay,
   } = useRoutine();
-  const { user } = useUser();
 
-  const {
-    infoOfMonth,
-    getInfoTaskDay,
-    addTaskDay,
-    deleteTaskDay,
-  } = useMonthData();
+  const { user, setLocation } = useUser();
+
+  const { infoOfMonth, getInfoTaskDay, addTaskDay, deleteTaskDay } =
+    useMonthData();
 
   useEffect(() => {
     getCalendar();
     getTaskRoutine();
     getInfoTaskDay(id3, id1);
+    setLocation("routine");
   }, [id1, id2, user]);
 
   useEffect(() => {
@@ -248,7 +246,6 @@ const Day = () => {
               </div>
               <div className="days-mini">
                 {infoCalendar.map((day, index) => {
-                  console.log(day);
                   return (
                     <DaysMiniCalendar
                       key={index}
