@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
-import { FaCheck, FaTasks } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 import { MdBookmarkRemove } from "react-icons/md";
+import { dayNames } from "../infor/MonthsDays";
 
 const TasksDay = ({
   month,
@@ -41,10 +42,15 @@ const TasksDay = ({
     }
   };
 
+  const date = new Date(year, month - 1, infoDay);
+  const dayOfWeek = date.getDay();
+
   return (
     <div className="select-day-taks">
       <div className="task-cont-header">
-        <h1>Day: {infoDay}</h1>
+        <h1>
+          {dayNames[dayOfWeek]} - {infoDay}
+        </h1>
         {type === "current" && (
           <div className="icons-add-rutine">
             <button
@@ -89,14 +95,36 @@ const TasksDay = ({
               </>
             ) : (
               <div className="welcome-text">
-                <button onClick={() => chanceCreateTask()}>
-                  Crea una tarea
-                </button>
+                <h2 onClick={() => chanceCreateTask()}>Crea una tarea</h2>
                 <img
                   src={
                     "https://cdn.prod.website-files.com/64c73d04a946980a4476537e/64cd4d0d89236fc80a3395b4_runner.png"
                   }
                 />
+                <div className="lines">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div className="lines-second">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div className="lines-third">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div className="lines-fourth">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
               </div>
             )}
           </div>

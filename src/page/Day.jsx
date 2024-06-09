@@ -64,12 +64,6 @@ const Day = () => {
 
   // navigate
 
-  const goBack = () => {
-    setLoading(false);
-    const nuevaFecha = `/calendar-routine/month/${id1}/${id3}`;
-    navigate(nuevaFecha);
-  };
-
   const goDay = (month, day, year, type) => {
     setLoading(false);
     let nextMonth = month;
@@ -298,9 +292,6 @@ const Day = () => {
                 <h2>finallyDay</h2>
               </button>
             )}
-            <button onClick={goBack}>
-              <IoReturnUpBack />
-            </button>
           </div>
           <div className="title-top">
             <h1>{percentag}%</h1>

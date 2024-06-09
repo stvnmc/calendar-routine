@@ -430,6 +430,10 @@ button {
   overflow: hidden;
 }
 
+.digital-clock h1 {
+  font-weight: 500;
+}
+
 .linea-digital,
 .linea-digital-top,
 .linea-digital-left,
@@ -634,29 +638,33 @@ footer img {
 
 .select-day-taks {
   width: 34vw;
-  padding: 17px;
   background: #a69583;
   border-radius: 5px;
   border: none;
   border-right: 0.4vh solid #706b6b;
   border-bottom: 0.4vh solid #706b6b;
+  overflow: hidden;
 }
 
 .select-day-taks,
 .calendar {
   margin: 30px 0;
-  height: 674px;
-  min-width: 400px;
+  height: 737px;
+  min-width: 467px;
 }
 
 .task-cont-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 15px 33px;
+  background-color: #44424014;
+  border-radius: 10px;
 }
 
 .task-cont-header h1 {
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 2.4em;
 }
 
 .top-bar-calendario {
@@ -672,17 +680,30 @@ footer img {
 }
 
 .router {
+  position: relative;
   display: flex;
-  width: 344px;
-  justify-content: space-between;
 }
+
+.linea-navBar {
+  position: absolute;
+  width: 110px;
+  height: 3px;
+  background-color: #0f0f0e;
+  border-radius: 17px;
+  transition: 1s;
+  bottom: -3px;
+}
+
 .router h1 {
   cursor: pointer;
   font-weight: 400;
+  width: 118px;
+  text-align: center;
+  transition: 0.5s;
 }
 
 .router h1.hover {
-  text-decoration: underline;
+  transform: scale(1.1);
 }
 
 .user-setting {
@@ -724,7 +745,7 @@ footer img {
 
 .setting {
   position: absolute;
-  top: 6px;
+  top: 44px;
   right: -55px;
   width: 185px;
   height: 208px;
@@ -841,7 +862,7 @@ footer img {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  height: 606px;
+  height: 586px;
   margin-top: 45px;
 }
 
@@ -877,22 +898,105 @@ footer img {
 
 .welcome-text {
   width: 100%;
-  height: 100%;
+  height: 96%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
   flex-direction: column;
+  justify-content: space-evenly;
+  position: relative;
+  overflow: hidden;
 }
 
-.welcome-text button {
-  width: 170px;
-  height: 48px;
-  font-size: 1em;
+.welcome-text h2 {
+  width: 250px;
+  height: 61px;
+  font-size: 2em;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 300;
+  color: #e6e1e1;
+  background-color: #41403e;
+  border: none;
+  border-radius: 4px;
+  border-bottom: 2px solid #c9c5c0;
+  border-right: 2px solid #c9c5c0;
+  transition: ease 1s;
 }
 
 .welcome-text img {
-  width: 362px;
-  height: 359px;
+  width: 347px;
+  height: 355px;
+}
+
+.lines,
+.lines-second,
+.lines-third,
+.lines-fourth {
+  display: flex;
+  position: absolute;
+  width: 700px;
+  bottom: 70px;
+  white-space: nowrap;
+}
+
+.lines {
+  animation: moveLines 5s linear infinite;
+}
+
+.lines-second {
+  animation: moveLinesSecond 10s linear infinite;
+}
+
+.lines-third {
+  animation: moveLinesThird 15s linear infinite;
+}
+.lines-fourth {
+  animation: moveLinesFourth 20s linear infinite;
+}
+
+.lines div,
+.lines-second div,
+.lines-third div,
+.lines-fourth div {
+  background-color: #0f0f0e;
+  margin-left: 20px;
+  height: 3px;
+  width: 150px;
+}
+
+@keyframes moveLines {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes moveLinesSecond {
+  0% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes moveLinesThird {
+  0% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+@keyframes moveLinesFourth {
+  0% {
+    transform: translateX(-400%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
 }
 
 .cont-tasks h2 {
@@ -902,9 +1006,8 @@ footer img {
 }
 
 .icons-add-rutine button {
-  width: 56px;
-  height: 42px;
-  margin-right: 18px;
+  width: 77px;
+  height: 46px;
   border: none;
   border-bottom: 0.2vh solid #7a7676;
   border-right: 0.1vw solid #7a7676;
@@ -941,7 +1044,7 @@ footer img {
 }
 
 .icons-add-rutine button svg {
-  font-size: 1.9em;
+  font-size: 2.4em;
   padding: 0 2%;
   transition: transform 1s ease;
 }
@@ -1054,7 +1157,8 @@ footer img {
   justify-content: center;
 }
 
-.icons-calendar button:hover {
+.icons-calendar button:hover,
+.welcome-text h2:hover {
   background: rgba(59, 175, 123, 0.176);
   color: #222d28f3;
   border-bottom: 1px solid rgb(25 38 32 / 22%);
@@ -1109,7 +1213,7 @@ footer img {
 }
 
 .hour {
-  f: relative;
+  position: relative;
   overflow: hidden;
   padding: 0.5vh 0.6vw;
   color: #fff;
@@ -1753,7 +1857,7 @@ footer img {
   width: 100%;
   height: 100%;
   background: linear-gradient(to right, #435c5c00, #a1a1a12f, #435c5c00);
-  f: absolute;
+  position: absolute;
   top: 0;
   left: -100%;
   animation: colorTransition 2s linear infinite;
@@ -1763,7 +1867,7 @@ footer img {
   width: 100%;
   height: 100%;
   background: linear-gradient(to right, #435c5c00, #2e2d2d27, #435c5c00);
-  f: absolute;
+  position: absolute;
   top: 0;
   left: -100%;
   animation: colorTransition 2s linear infinite;
