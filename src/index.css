@@ -637,6 +637,7 @@ footer img {
 }
 
 .select-day-taks {
+  position: relative;
   width: 34vw;
   background: #a69583;
   border-radius: 5px;
@@ -672,7 +673,7 @@ footer img {
   justify-content: space-between;
   align-items: center;
   height: 112px;
-  margin: 0 3vw;
+  margin: 0 64px;
 }
 
 .container .digital-clock {
@@ -862,8 +863,8 @@ footer img {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  height: 586px;
-  margin-top: 45px;
+  height: 552px;
+  margin: 47px;
 }
 
 .tasks::-webkit-scrollbar {
@@ -892,8 +893,8 @@ footer img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0.5vh 0.9vw;
-  border-bottom: 0.2vh solid #887e5e47;
+  margin: 1%;
+  border-bottom: 3px solid #51504f47;
 }
 
 .welcome-text {
@@ -908,9 +909,9 @@ footer img {
 }
 
 .welcome-text h2 {
-  width: 250px;
-  height: 61px;
-  font-size: 2em;
+  width: 244px;
+  height: 58px;
+  font-size: 1.7em;
   text-align: center;
   cursor: pointer;
   font-weight: 300;
@@ -1000,8 +1001,10 @@ footer img {
 }
 
 .cont-tasks h2 {
+  padding: 0 8px;
   width: 89%;
-  font-size: 2em;
+  font-size: 1.8em;
+  font-weight: 400;
   overflow-wrap: break-word;
 }
 
@@ -1085,7 +1088,7 @@ footer img {
 }
 
 .create-task {
-  height: 7vh;
+  height: 319px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -1093,28 +1096,29 @@ footer img {
 }
 
 .create-task input {
-  width: 10vw;
-  height: 2.5vh;
-  font-size: 17px;
+  width: 283px;
+  height: 46px;
+  font-size: 1.5em;
   padding: 0 2%;
   background-color: #a8a19e;
   border: none;
-  border-bottom: 2px solid rgba(158, 123, 123, 0.377);
+  border-bottom: 2px solid rgba(66, 58, 58, 0.856);
+  border-right: 2px solid rgba(66, 58, 58, 0.856);
   border-radius: 4px;
 }
 
 .create-task input::placeholder {
-  color: #e2d1bd;
+  color: #faeee3;
 }
 
 .create-task .add {
-  background: rgba(59, 175, 123, 0.176);
-  color: #222d28f3;
   border: none;
-  width: 7.8vw;
-  height: 3vh;
-  border-radius: 2px;
-  border-bottom: 1px solid rgb(25 38 32 / 22%);
+  width: 152px;
+  height: 44px;
+}
+
+.create-task .add svg {
+  font-size: 1.5em;
 }
 
 /* //////////////////// Day Routine ////////////////////////////// */
@@ -1131,7 +1135,8 @@ footer img {
 .icons-calendar button,
 .user-setting button,
 .logout button,
-.welcome-text button {
+.welcome-text button,
+.create-task .add {
   color: #fff;
   background-color: #565554;
   border: none;
@@ -1158,7 +1163,8 @@ footer img {
 }
 
 .icons-calendar button:hover,
-.welcome-text h2:hover {
+.welcome-text h2:hover,
+.create-task .add:hover {
   background: rgba(59, 175, 123, 0.176);
   color: #222d28f3;
   border-bottom: 1px solid rgb(25 38 32 / 22%);
