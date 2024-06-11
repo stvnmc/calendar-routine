@@ -214,7 +214,7 @@ button {
 }
 
 .listTask:hover {
-  background-color: #e9d9d9e7;
+  background-color: #d1c1c1e7;
   border-bottom: 0.3vh solid #3f3e3e;
   border-right: 0.3vh solid #3f3e3e;
 }
@@ -723,11 +723,9 @@ footer img {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 55px;
-  height: 4vh;
-  margin-right: 1vw;
-  border-radius: 2px;
-  font-size: 25px;
+  width: 57px;
+  height: 44px;
+  font-size: 1.9em;
 }
 
 .user-setting.hover button {
@@ -746,7 +744,7 @@ footer img {
 
 .setting {
   position: absolute;
-  top: 44px;
+  top: 49px;
   right: -55px;
   width: 185px;
   height: 208px;
@@ -756,6 +754,7 @@ footer img {
   border-right: 0.4vh solid #4e4e4e;
   border-bottom: 0.4vh solid #4e4e4e;
   overflow: hidden;
+  z-index: 1;
 }
 
 .setting h2 {
@@ -1141,25 +1140,20 @@ footer img {
   background-color: #565554;
   border: none;
   border-radius: 4px;
-  border-bottom: 2px solid #9b9183;
-  border-right: 2px solid #9b9183;
+  border-bottom: 2px solid #a9a297;
+  border-right: 2px solid #a9a297;
   transition: ease 1s;
 }
 
 .cont-main-day {
   display: flex;
-  height: 100vh;
-  width: 100vw;
-  padding-left: 2vw;
   overflow-y: hidden;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .title-left {
-  display: flex;
-  height: 8vh;
-  width: 19vw;
-  align-items: center;
-  justify-content: center;
+  margin: 18px 8px;
 }
 
 .icons-calendar button:hover,
@@ -1173,18 +1167,18 @@ footer img {
 
 .title-left > h1 {
   color: rgb(41 39 39);
-  font-size: 2.8vw;
+  font-size: 3.5em;
 }
 
 .top-day-icons {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .top-day-icons button {
-  margin: 4vh 2vw;
-  width: 3.5vw;
-  height: 4vh;
+  width: 72px;
+  height: 51px;
 }
 
 .top-day-icons button:hover {
@@ -1202,35 +1196,42 @@ footer img {
 
 .top-day-icons button svg {
   transition: ease 1s;
-  font-size: 1.7vw;
+  font-size: 2em;
   transform: translateY(0);
 }
 
 .small-calendar {
   display: flex;
-  margin-left: 1.3vw;
 }
 
 .hours {
+  width: 65vw;
+  height: 85vh;
+  margin: 16px 2px;
+  min-height: 809px;
+  min-width: 572px;
   display: grid;
-  grid-template-columns: repeat(4, 16vw);
-  grid-template-rows: repeat(6, 14vh);
-  gap: 0.5vh 0.5vw;
+  grid-template-columns: repeat(4, 24.3%);
+  grid-template-rows: repeat(6, 16.3%);
+  gap: 3px;
 }
 
 .hour {
   position: relative;
   overflow: hidden;
-  padding: 0.5vh 0.6vw;
-  color: #fff;
+  padding: 3px 8px;
   border-radius: 4px;
+  color: #2e2e2e;
   border: none;
-  border-bottom: 1px solid #dddada;
-  border-right: 1px solid #dddada;
+  border-bottom: 2px solid #756a6a;
+  border-right: 2px solid #756a6a;
 }
 
+.hour .title-hour h1 {
+  font-weight: 400;
+}
 .early-Morning {
-  background-color: #435c5ca6;
+  background-color: #3c5c5c9d;
   grid-column: 1;
 }
 
@@ -1240,11 +1241,11 @@ footer img {
 }
 
 .early-Morning .title-hour svg {
-  color: #c1cae9;
+  color: #677299;
 }
 
 .morning {
-  background-color: #a8cec9;
+  background-color: #a8cec9a4;
   grid-column: 2;
 }
 
@@ -1253,16 +1254,16 @@ footer img {
 }
 
 .morning .title-hour svg {
-  color: #c5a172;
+  color: #c4a480;
 }
 
 .afternoon {
-  background-color: #bb916b;
+  background-color: #bb906bb2;
   grid-column: 3;
 }
 
 .afternoon .title-hour svg {
-  color: #e9ddcd;
+  color: #ffeed7;
 }
 
 .afternoon:hover {
@@ -1270,7 +1271,7 @@ footer img {
 }
 
 .night {
-  background-color: #475984;
+  background-color: #475984de;
   grid-column: 4;
 }
 
@@ -1284,39 +1285,42 @@ footer img {
 
 .hour .title-hour svg,
 .hour .title-hour h1 {
-  font-size: 1.4vw;
+  font-size: 1.9em;
+}
+
+.title-hour.none svg {
+  color: #f2eb38;
 }
 
 /* minicalenraio  */
 
 .cont-days-mini {
-  width: 15vw;
-
+  width: 250px;
   border-radius: 6px;
   padding: 2%;
   color: #2c2b2b;
-}
-
-.content-routine {
-  margin-top: 2vh;
-  margin-left: 4vw;
+  margin-right: 29px;
 }
 
 .days-mini {
   display: grid;
-  gap: 0.3vh 0.3vw;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 3vh);
-  margin-top: 1vh;
+  background: #a69583;
+  gap: 4px;
+  grid-template-columns: repeat(7, 32px);
+  grid-template-rows: repeat(6, 27px);
+  padding-top: 7px;
+  border-radius: 4px;
+  border-bottom: 2px solid #424241;
+  border-right: 2px solid #424241;
 }
 
 .days-of-week-mini {
   background-color: #e1dfd1;
   border: none;
   padding: 1%;
-  border-radius: 4px;
-  border-bottom: 0.2vh solid #20241c;
-  border-right: 0.2vh solid #20241c;
+  border-radius: 7px;
+  border-bottom: 2px solid #847c72;
+  border-right: 2px solid #847c72;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
 }
@@ -1325,7 +1329,7 @@ footer img {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2vw;
+  font-size: 2em;
   padding: 0 2%;
   font-weight: 300;
 }
@@ -1349,16 +1353,16 @@ footer img {
 }
 
 .days-mini .day-mini-calendar h2 {
-  font-size: 1.1vw;
+  font-size: 1.5em;
   padding: 0 2%;
-  font-weight: 400;
+  font-weight: 300;
 }
 .days-mini .day-mini-calendar.next h2 {
-  color: #dacccc;
+  color: #f3e9e9;
 }
 
 .days-mini .day-mini-calendar.former h2 {
-  color: #dacccc;
+  color: #f3e9e9;
 }
 
 .days-mini .day-mini-calendar.former:hover h2,
@@ -1434,9 +1438,10 @@ footer img {
 
 .title-routine {
   display: flex;
-  margin-bottom: 2vh;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
+  flex-direction: column;
+  height: 400px;
 }
 
 .title-routine .title-top {
@@ -1445,31 +1450,23 @@ footer img {
   text-shadow: 2px 2px 22px rgb(0 0 0 / 8%);
   border: none;
   border-bottom: 0.2vh solid #b3ab9b;
+  justify-content: space-around;
+  width: 368px;
 }
 
 .title-routine h1 {
-  font-size: 3.3vw;
-  margin-right: 3vw;
-  padding: 0 2%;
-  width: 11vw;
+  font-size: 3.5em;
+  font-weight: 400;
 }
 
 .title-routine > h1:first-child {
   width: 20vw;
 }
 
-.buttons-routine {
-  display: flex;
-}
-
 .title-routine button {
-  width: 10vw;
-  margin-right: 1vw;
-  height: 4vh;
-}
-
-.title-routine button svg {
-  font-size: 2vw;
+  width: 219px;
+  height: 56px;
+  margin: 0 20px;
 }
 
 .title-routine button:hover,
@@ -1482,8 +1479,7 @@ footer img {
 }
 
 .title-routine button h2 {
-  transition: ease 1s;
-  font-size: 1.1vw;
+  font-size: 1.7em;
   padding: 0 2%;
   font-weight: 400;
 }
@@ -1505,28 +1501,29 @@ footer img {
 .task-routine {
   display: flex;
   justify-content: space-between;
-  font-size: 1.2vw;
-  height: 8vh;
-  margin-top: 2vh;
+  font-size: 1.3em;
+  height: 84px;
   overflow-wrap: break-word;
 }
 
 .task-routine h2 {
-  width: 12.3vw;
   overflow-wrap: break-word;
   overflow: auto;
+  font-size: 1.7em;
+  font-weight: 400;
+  width: 90%;
 }
 
 .task-routine h2::-webkit-scrollbar {
-  width: 0.2vw;
+  width: 5px;
 }
 
 .task-routine h2::-webkit-scrollbar-track {
-  background: #f1f1f104;
+  background: #f1f1f100;
 }
 
 .task-routine h2::-webkit-scrollbar-thumb {
-  background: #222d282f;
+  background: #404140be;
 }
 
 .task-routine h2::-webkit-scrollbar-thumb:hover {
@@ -1534,29 +1531,22 @@ footer img {
 }
 
 .task-routine button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2vw;
-  height: 4vh;
+  width: 40px;
+  height: 39px;
+  margin-left: 9px;
 }
 
 .task-routine button svg {
-  font-size: 2vw;
-  transition: ease 1s;
+  font-size: 2.6em;
+  transition: 0.5s;
 }
 
 .task-routine button:hover,
 .task-routine .none {
-  border-bottom: 1px solid rgb(25 38 32 / 22%);
-  border-right: 1px solid rgb(25 38 32 / 22%);
-  background: rgba(59, 175, 123, 0.176);
+  border-bottom: 1px solid rgba(32, 34, 33, 0.22);
+  border-right: 1px solid rgba(32, 34, 33, 0.22);
+  background: rgba(148, 151, 150, 0.918);
   color: #222d28f3;
-}
-
-.task-routine button:hover svg,
-.task-routine .none svg {
-  transform: rotate(136deg);
 }
 
 /* /////////// create routine ////////////*/
@@ -1894,5 +1884,10 @@ footer img {
 @media screen and (max-width: 900px) {
   .digital-clock {
     display: none;
+  }
+  .hours {
+    display: flex;
+    flex-direction: column;
+    height: auto;
   }
 }

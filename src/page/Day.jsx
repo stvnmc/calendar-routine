@@ -14,7 +14,6 @@ import Routine from "../components/Routine";
 // icons
 import { SlArrowUp, SlArrowDown } from "react-icons/sl";
 import { useMonthData } from "../context/MonthDataContext";
-import { IoReturnUpBack } from "react-icons/io5";
 import DayContainer from "../components/DayContainer";
 import { DaysMiniCalendar } from "../components/components/DaysMiniCalendar";
 
@@ -23,7 +22,7 @@ const Day = () => {
   const navigate = useNavigate();
   const [infoCalendar, setinfoCalendar] = useState([]);
   const [percentag, setPercentag] = useState(0);
-  const [dayExists, setDayExists] = useState(true);
+  const [dayExists, setDayExists] = useState(null);
   const [dayTask, setDayTask] = useState(null);
 
   // context
@@ -43,9 +42,7 @@ const Day = () => {
   } = useRoutine();
 
   const { user, setLocation } = useUser();
-
-  const { infoOfMonth, getInfoTaskDay, addTaskDay, deleteTaskDay } =
-    useMonthData();
+  const { infoOfMonth, getInfoTaskDay } = useMonthData();
 
   useEffect(() => {
     getCalendar();
@@ -61,8 +58,6 @@ const Day = () => {
   useEffect(() => {
     getPercentageDay();
   }, [routineDay]);
-
-  // navigate
 
   const goDay = (month, day, year, type) => {
     setLoading(false);
@@ -86,14 +81,12 @@ const Day = () => {
     let daysInMonth = new Date(id3, parseInt(id1), 0).getDate();
 
     let newDay = parseInt(e) + parseInt(id2);
-
     let newMonth = id1;
     let newYear = id3;
 
     if (newDay < 1) {
       let newDaysInMonth = new Date(id3, parseInt(id1) - 1, 0).getDate();
       newDay = newDaysInMonth;
-
       newMonth--;
     } else if (newDay > daysInMonth) {
       newDay = 1;
@@ -124,8 +117,6 @@ const Day = () => {
     chanceDay(1);
     addRoutineDayTasks(id1, id2, id3, percentag);
   };
-
-  // Routine
 
   const getTaskRoutine = async () => {
     if (!user || typeof user !== "string") {
@@ -214,7 +205,6 @@ const Day = () => {
     }, intervalTime);
   };
 
-  // tasks
   const getTasksDay = async () => {
     if (infoOfMonth.length === 0) return;
     if (infoOfMonth[id2]) {
@@ -264,26 +254,8 @@ const Day = () => {
             </div>
           </div>
         </div>
-
-        <div className="task-day">
-          <div className="content-task">
-            <DayContainer
-              dayNumber={id2}
-              month={id1}
-              year={id3}
-              type={"current"}
-              dayOfWeek={null}
-              infoOfMonth={dayTask}
-              addTaskDay={addTaskDay}
-              deleteTaskDay={deleteTaskDay}
-              loadingMonth={true}
-            />
-          </div>
-        </div>
-      </div>
-      <div className="content-routine">
         <div className="title-routine">
-          <div className="buttons-routine">
+          <div>
             <button onClick={openCreateRutine}>
               <h2>Create Routine</h2>
             </button>
@@ -293,27 +265,28 @@ const Day = () => {
               </button>
             )}
           </div>
+
           <div className="title-top">
             <h1>{percentag}%</h1>
             <h1>{stages}</h1>
           </div>
         </div>
-        <div className="hours">
-          {dayHours().map((hourObj, index) => (
-            <Routine
-              key={index}
-              hour={hourObj.hour}
-              period={hourObj.period}
-              style={hourObj.style}
-              routine={
-                routineDay === 0 ? routineDay[24] : routineDay[hourObj.hour]
-              }
-              setNewRoutineDay={setNewRoutineDay}
-              dayExists={dayExists}
-              loading={loading}
-            />
-          ))}
-        </div>
+      </div>
+      <div className="hours">
+        {dayHours().map((hourObj, index) => (
+          <Routine
+            key={index}
+            hour={hourObj.hour}
+            period={hourObj.period}
+            style={hourObj.style}
+            routine={
+              routineDay === 0 ? routineDay[24] : routineDay[hourObj.hour]
+            }
+            setNewRoutineDay={setNewRoutineDay}
+            dayExists={dayExists}
+            loading={loading}
+          />
+        ))}
       </div>
     </div>
   );

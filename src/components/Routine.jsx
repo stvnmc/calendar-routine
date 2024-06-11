@@ -3,8 +3,10 @@ import React, { useState } from "react";
 
 import { MdWbSunny } from "react-icons/md";
 import { IoMdMoon } from "react-icons/io";
-import { IoMdAdd } from "react-icons/io";
+import { BsX } from "react-icons/bs";
 import { useEffect } from "react";
+import { IoIosCheckmark } from "react-icons/io";
+import { IoIosStar } from "react-icons/io";
 
 const Routine = ({
   hour,
@@ -41,7 +43,7 @@ const Routine = ({
             onClick={chanceStateTask}
             className={completTask ? "none" : "incomplet"}
           >
-            <IoMdAdd />
+            {completTask ? <BsX /> : <IoIosCheckmark />}
           </button>
         )}
       </div>
@@ -55,9 +57,11 @@ const Routine = ({
     >
       {loading ? (
         <>
-          <div className="title-hour">
+          <div className={`title-hour ${completTask ? "none" : "incomplet"}`}>
             <h1>{hour}:00</h1>
-            {period === "early-Morning" || period === "night" ? (
+            {completTask ? (
+              <IoIosStar />
+            ) : period === "early-Morning" || period === "night" ? (
               <IoMdMoon />
             ) : (
               <MdWbSunny />
