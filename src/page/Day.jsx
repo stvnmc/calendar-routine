@@ -14,7 +14,6 @@ import Routine from "../components/Routine";
 // icons
 import { SlArrowUp, SlArrowDown } from "react-icons/sl";
 import { useMonthData } from "../context/MonthDataContext";
-import DayContainer from "../components/DayContainer";
 import { DaysMiniCalendar } from "../components/components/DaysMiniCalendar";
 
 const Day = () => {

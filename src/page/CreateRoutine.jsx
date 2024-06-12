@@ -87,42 +87,48 @@ const CreateRoutine = () => {
         <div className="steps-info">
           {openSFD ? (
             stages === "weekend" ? (
-              <>
-                <div>
-                  <img
-                    src={
-                      "https://assets-global.website-files.com/64c73d04a946980a4476537e/64d9c64fb20aa28a2850f036_chaotic-good.png"
-                    }
-                  />
-                </div>
-                <h1>Rest days are very important</h1>
-              </>
-            ) : (
-              <>
-                <div>
-                  <img
-                    src={
-                      "https://assets-global.website-files.com/64c73d04a946980a4476537e/64cd4b0849333dd65b9525a6_coffee.png"
-                    }
-                  />
-                </div>
-                <h1>The most productive days of the week</h1>
-              </>
-            )
-          ) : (
-            <>
               <div>
+                <h1>Add information about your {stages} routine :</h1>
                 <img
                   src={
-                    "https://assets-global.website-files.com/64c73d04a946980a4476537e/64cd4b9bf0da0e3228caa6d0_growth.png"
+                    "https://assets-global.website-files.com/64c73d04a946980a4476537e/64d9c64fb20aa28a2850f036_chaotic-good.png"
                   }
                 />
               </div>
-              <h1>Having an established routine is important</h1>
-            </>
+            ) : (
+              <div>
+                <h1>Add information about your {stages} routine :</h1>
+                <img
+                  src={
+                    "https://assets-global.website-files.com/64c73d04a946980a4476537e/64cd4b0849333dd65b9525a6_coffee.png"
+                  }
+                />
+              </div>
+            )
+          ) : (
+            <div>
+              <h1>Select rest days:</h1>
+              <img
+                src={
+                  "https://assets-global.website-files.com/64c73d04a946980a4476537e/64cd4b9bf0da0e3228caa6d0_growth.png"
+                }
+              />
+            </div>
           )}
         </div>
-
+        {openSFD ? (
+          <div className="next-previous">
+            <button onClick={previousStage}>previous</button>
+            <button onClick={nextStage}>next</button>
+          </div>
+        ) : (
+          <div className="next-previous">
+            <button onClick={retroceder}>Back</button>
+            <button className="next" onClick={createRoutine}>
+              next
+            </button>
+          </div>
+        )}
         <div className="steps">
           <TbPointFilled className={openSFD ? "" : "here"} />
           <TbPointFilled
@@ -135,7 +141,6 @@ const CreateRoutine = () => {
       </div>
       {openSFD ? (
         <div className="add-info-routine">
-          <h1>Add information about your {stages} routine :</h1>
           <div className="hours">
             {dayHours().map((hourObj, index, completed) => (
               <InputTextCR
@@ -151,42 +156,20 @@ const CreateRoutine = () => {
               />
             ))}
           </div>
-          <div className="next-previous">
-            <button onClick={previousStage}>previous</button>
-            <button onClick={nextStage}>next</button>
-          </div>
         </div>
       ) : (
         <div className="select-routine">
-          <h1>Select rest days:</h1>
-          <div className="days-off">
-            {dayNames.map((dayName, index) => (
-              <div
-                key={index}
-                className={
-                  isDaySelected(index) ? "days-create selected" : "days-create"
-                }
-                onClick={() => addWeekedDay(index)}
-              >
-                <h1>{dayName}</h1>
-                <ul className="lines">
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </ul>
-              </div>
-            ))}
-          </div>
-          <div className="next-previous">
-            <button onClick={retroceder}>Back</button>
-            <button className="next" onClick={createRoutine}>
-              next
-            </button>
-          </div>
+          {dayNames.map((dayName, index) => (
+            <div
+              key={index}
+              className={
+                isDaySelected(index) ? "days-create selected" : "days-create"
+              }
+              onClick={() => addWeekedDay(index)}
+            >
+              <h1>{dayName}</h1>
+            </div>
+          ))}
         </div>
       )}
     </div>

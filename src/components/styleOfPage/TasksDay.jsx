@@ -3,6 +3,7 @@ import { IoMdAdd } from "react-icons/io";
 import { FaCheck } from "react-icons/fa";
 import { MdBookmarkRemove } from "react-icons/md";
 import { dayNames } from "../infor/MonthsDays";
+import { useEffect } from "react";
 
 const TasksDay = ({
   month,
@@ -16,6 +17,12 @@ const TasksDay = ({
   const [inputValue, setInputValue] = useState("");
   const [createTask, setCreateTask] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [arrayTasks, setArrayTasks] = useState([0, 1, 2, 3, 4, 5]);
+
+  useEffect(() => {
+    console.log(Object.keys(infoOfMonth).length);
+    console.log(arrayTasks.length);
+  }, [infoOfMonth]);
 
   const chanceState = async (type, i) => {
     setLoading(false);
@@ -68,7 +75,7 @@ const TasksDay = ({
             <input
               type="text"
               value={inputValue}
-              placeholder="Task"
+              placeholder="Write the task"
               onChange={(event) => setInputValue(event.target.value)}
               onKeyPress={handleKeyPress}
               autoFocus
@@ -81,15 +88,19 @@ const TasksDay = ({
           <div className="tasks">
             {infoOfMonth[infoDay] && infoOfMonth[infoDay].length > 0 ? (
               <>
-                {infoOfMonth[infoDay]?.map((item, i) => (
-                  <div key={i} className="cont-tasks">
-                    <h2>{item}</h2>
-                    <button
-                      className="delete"
-                      onClick={() => chanceState("delete", i)}
-                    >
-                      <MdBookmarkRemove />
-                    </button>
+                {arrayTasks.map((item) => (
+                  <div key={item} className="cont-tasks">
+                    {infoOfMonth[infoDay]?.[item] && (
+                      <>
+                        <h2> {infoOfMonth[infoDay]?.[item]}</h2>
+                        <button
+                          className="delete"
+                          onClick={() => chanceState("delete", item)}
+                        >
+                          <MdBookmarkRemove />
+                        </button>
+                      </>
+                    )}
                   </div>
                 ))}
               </>

@@ -717,6 +717,7 @@ footer img {
 
 .user-setting h1 {
   font-size: 2.5em;
+  font-weight: 500;
 }
 
 .user-setting button {
@@ -862,8 +863,8 @@ footer img {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  height: 552px;
-  margin: 47px;
+  height: 603px;
+  margin: 21px 45px;
 }
 
 .tasks::-webkit-scrollbar {
@@ -893,6 +894,8 @@ footer img {
   justify-content: space-between;
   align-items: center;
   margin: 1%;
+  overflow: visible;
+  min-height: 77px;
   border-bottom: 3px solid #51504f47;
 }
 
@@ -909,7 +912,7 @@ footer img {
 
 .welcome-text h2 {
   width: 244px;
-  height: 58px;
+  height: 54px;
   font-size: 1.7em;
   text-align: center;
   cursor: pointer;
@@ -1000,11 +1003,28 @@ footer img {
 }
 
 .cont-tasks h2 {
-  padding: 0 8px;
+  padding: 0 4px;
   width: 89%;
   font-size: 1.8em;
   font-weight: 400;
-  overflow-wrap: break-word;
+  height: 50px;
+  overflow-y: auto;
+}
+
+.cont-tasks h2::-webkit-scrollbar {
+  width: 0.4vw;
+}
+
+.cont-tasks h2::-webkit-scrollbar-track {
+  background: #f1f1f104;
+}
+
+.cont-tasks h2::-webkit-scrollbar-thumb {
+  background: #222d28bd;
+}
+
+.cont-tasks h2::-webkit-scrollbar-thumb:hover {
+  background: #222d28f3;
 }
 
 .icons-add-rutine button {
@@ -1104,6 +1124,13 @@ footer img {
   border-bottom: 2px solid rgba(66, 58, 58, 0.856);
   border-right: 2px solid rgba(66, 58, 58, 0.856);
   border-radius: 4px;
+  transition: 1s;
+}
+
+.create-task input:focus {
+  background-color: #383635;
+  border-bottom: 2px solid rgba(109, 103, 103, 0.856);
+  border-right: 2px solid rgba(109, 103, 103, 0.856);
 }
 
 .create-task input::placeholder {
@@ -1154,6 +1181,9 @@ footer img {
 
 .title-left {
   margin: 18px 8px;
+}
+.cont-day-left {
+  margin: 50px 0;
 }
 
 .icons-calendar button:hover,
@@ -1295,7 +1325,7 @@ footer img {
 /* minicalenraio  */
 
 .cont-days-mini {
-  width: 250px;
+  width: 343px;
   border-radius: 6px;
   padding: 2%;
   color: #2c2b2b;
@@ -1306,10 +1336,11 @@ footer img {
   display: grid;
   background: #a69583;
   gap: 4px;
-  grid-template-columns: repeat(7, 32px);
-  grid-template-rows: repeat(6, 27px);
-  padding-top: 7px;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  padding: 5px;
   border-radius: 4px;
+  height: 221px;
   border-bottom: 2px solid #424241;
   border-right: 2px solid #424241;
 }
@@ -1339,7 +1370,7 @@ footer img {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
+  border-radius: 28%;
   border: none;
   background-color: transparent;
 }
@@ -1353,9 +1384,9 @@ footer img {
 }
 
 .days-mini .day-mini-calendar h2 {
-  font-size: 1.5em;
+  font-size: 2em;
   padding: 0 2%;
-  font-weight: 300;
+  font-weight: 100;
 }
 .days-mini .day-mini-calendar.next h2 {
   color: #f3e9e9;
@@ -1439,9 +1470,9 @@ footer img {
 .title-routine {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
-  height: 400px;
+  height: 340px;
 }
 
 .title-routine .title-top {
@@ -1449,9 +1480,9 @@ footer img {
   color: rgb(41 39 39);
   text-shadow: 2px 2px 22px rgb(0 0 0 / 8%);
   border: none;
-  border-bottom: 0.2vh solid #b3ab9b;
+  border-bottom: 2px solid #b3ab9b;
   justify-content: space-around;
-  width: 368px;
+  width: 100%;
 }
 
 .title-routine h1 {
@@ -1464,9 +1495,9 @@ footer img {
 }
 
 .title-routine button {
-  width: 219px;
+  width: 190px;
   height: 56px;
-  margin: 0 20px;
+  margin: 0 16px;
 }
 
 .title-routine button:hover,
@@ -1552,25 +1583,17 @@ footer img {
 /* /////////// create routine ////////////*/
 
 .cont-create {
-  background-color: #b29d8a;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16'%3E%3Cg fill='%23382e24' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/%3E%3C/g%3E%3C/svg%3E");
-  width: 100vw;
-  height: 100vh;
   display: flex;
+  flex-wrap: wrap;
+  margin: 29px 0;
 }
 
 .steps-to-follow {
-  width: 30vw;
+  width: 525px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-}
-
-.select-routine {
-  width: 65vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  margin: 0 40px;
 }
 
 .days-off {
@@ -1580,13 +1603,18 @@ footer img {
   margin: 4vh 0;
 }
 
+
+.select-routine{
+  
+}
+
 .days-create {
   background-color: #f0d0d0fb;
   border-radius: 5px;
-  border-bottom: 0.3vh solid #d5caca;
-  border-right: 0.2vw solid #d5caca;
+  border-bottom: 3px solid #d5caca;
+  border-right: 3px solid #d5caca;
   transition: 1s ease;
-  padding: 1vh 0.6vw;
+  padding: 43px 83px;
   cursor: pointer;
 }
 
@@ -1688,21 +1716,10 @@ footer img {
   transform: rotate(136deg);
 }
 
-.add-info-routine {
-  padding: 1vh 1vw;
-}
-
 .add-info-routine .hours {
   display: grid;
-  grid-template-columns: repeat(4, 14vw);
-  grid-template-rows: repeat(6, 13vh);
-  gap: 0.5vh 0.5vw;
-}
-
-.add-info-routine > h1:first-child {
-  margin: 2vh 0vw;
-  color: rgb(41 39 39);
-  font-size: 2vw;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
 }
 
 .input-create-text {
@@ -1786,17 +1803,11 @@ footer img {
   background-color: #f5f5f5f3;
 }
 
-.next-previous {
-  display: flex;
-  margin: 2vh 0vw;
-  width: 20vw;
-  justify-content: space-between;
-}
-
 .next-previous button {
-  width: 9vw;
-  height: 5vh;
-  font-size: 1vw;
+  width: 140px;
+  height: 50px;
+  font-size: 1.5em;
+  margin: 0 9px;
 }
 
 .next-previous button:hover {
@@ -1805,42 +1816,31 @@ footer img {
   background: rgba(59, 175, 123, 0.176);
   color: #222d28f3;
 }
-
 .steps {
-  width: 25vw;
   display: flex;
-  margin-top: 1vh;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 4vh;
 }
 
 .steps svg {
-  font-size: 5vw;
+  font-size: 8em;
   transition: 1s;
 }
 
 .steps .here {
-  font-size: 7vw;
-  color: #fff;
-}
-
-.steps-info {
-  margin: 0 3vw;
+  font-size: 11em;
+  color: #716969;
 }
 
 .steps-info img {
-  margin-top: 5vh;
-  width: 22vw;
-  filter: grayscale(40%);
+  margin-top: 28px;
+  width: 434px;
   transition: 1s;
 }
 
 .steps-info h1 {
-  margin-top: 5vh;
-  font-size: 2vw;
-  width: 26vw;
-  height: 15vh;
+  margin: 20px 0vw;
+  font-size: 2em;
+  font-weight: 500;
 }
 
 .steps-info div {
