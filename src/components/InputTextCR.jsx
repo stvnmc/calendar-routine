@@ -78,13 +78,7 @@ const InputTextCR = ({
         </div>
       ) : (
         <div className="input-create-text">
-          {Task === "" ? (
-            <ul className="lines">
-              <li></li>
-            </ul>
-          ) : (
-            <h2>{Task}</h2>
-          )}
+          <h2>{Task}</h2>
         </div>
       )}
     </div>

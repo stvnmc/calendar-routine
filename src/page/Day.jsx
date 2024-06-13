@@ -253,23 +253,28 @@ const Day = () => {
             </div>
           </div>
         </div>
-        <div className="title-routine">
-          <div>
-            <button onClick={openCreateRutine}>
-              <h2>Create Routine</h2>
-            </button>
-            {dayExists && (
-              <button onClick={finallyDay}>
-                <h2>finallyDay</h2>
+        {stages && (
+          <div className="title-routine">
+            <div>
+              <button onClick={openCreateRutine}>
+                <h2>Create Routine</h2>
               </button>
-            )}
-          </div>
+              {dayExists && (
+                <button
+                  onClick={finallyDay}
+                  className={`${dayExists ? "visible" : "on-visible"}`}
+                >
+                  <h2>finallyDay</h2>
+                </button>
+              )}
+            </div>
 
-          <div className="title-top">
-            <h1>{percentag}%</h1>
-            <h1>{stages}</h1>
+            <div className="title-top">
+              <h1>{percentag}%</h1>
+              <h1>{stages}</h1>
+            </div>
           </div>
-        </div>
+        )}
       </div>
       <div className="hours">
         {dayHours().map((hourObj, index) => (

@@ -13,17 +13,6 @@ const Footer = () => {
         />
       </div>
       <div className="content">
-        <div className="contact">
-          <h4>Contact</h4>
-          <div>
-            <h2>Name:</h2>
-            <h2>Steven Marchena Caballero</h2>
-          </div>
-          <div>
-            <h2>Email:</h2>
-            <h2>stvnmc123@gmail.com</h2>
-          </div>
-        </div>
         <div className="inspired">
           <h1>
             Images:
@@ -32,17 +21,16 @@ const Footer = () => {
             </a>
           </h1>
         </div>
-        <div className="footer-rigth">
-          <div className="cont-links">
-            <a href="https://www.instagram.com/cuatrommc/?hl=es">
-              <FaGithub />
-            </a>
-            <a href="https://github.com/stvnmc">
-              <FaInstagram />
-            </a>
-          </div>
-          <p>&copy; 2024</p>
+
+        <div className="cont-links">
+          <a href="https://www.instagram.com/cuatrommc/?hl=es">
+            <FaGithub />
+          </a>
+          <a href="https://github.com/stvnmc">
+            <FaInstagram />
+          </a>
         </div>
+        <p>&copy; 2024</p>
       </div>
     </footer>
   );

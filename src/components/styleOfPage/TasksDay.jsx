@@ -17,12 +17,30 @@ const TasksDay = ({
   const [inputValue, setInputValue] = useState("");
   const [createTask, setCreateTask] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [arrayTasks, setArrayTasks] = useState([0, 1, 2, 3, 4, 5]);
+  const [loadingTasks, setLoadingTasks] = useState(false);
+  const [arrayTasks, setArrayTasks] = useState([0, 1, 2, 3, 4, 5, 6]);
 
   useEffect(() => {
-    console.log(Object.keys(infoOfMonth).length);
-    console.log(arrayTasks.length);
-  }, [infoOfMonth]);
+    if (infoOfMonth[infoDay]) {
+      const targetLength = Math.max(infoOfMonth[infoDay].length, 6);
+      setArrayTasks((prevArrayTasks) => {
+        if (targetLength > prevArrayTasks.length) {
+          return [
+            ...prevArrayTasks,
+            ...Array.from(
+              { length: targetLength - prevArrayTasks.length },
+              (_, i) => prevArrayTasks.length + i
+            ),
+          ];
+        } else if (targetLength < prevArrayTasks.length) {
+          return prevArrayTasks.slice(0, targetLength);
+        }
+        return prevArrayTasks;
+      });
+    }
+
+    if (Object.keys(infoOfMonth).length) setLoadingTasks(true);
+  }, [infoOfMonth, infoDay]);
 
   const chanceState = async (type, i) => {
     setLoading(false);
@@ -86,57 +104,61 @@ const TasksDay = ({
           </div>
         ) : (
           <div className="tasks">
-            {infoOfMonth[infoDay] && infoOfMonth[infoDay].length > 0 ? (
-              <>
-                {arrayTasks.map((item) => (
-                  <div key={item} className="cont-tasks">
-                    {infoOfMonth[infoDay]?.[item] && (
-                      <>
-                        <h2> {infoOfMonth[infoDay]?.[item]}</h2>
-                        <button
-                          className="delete"
-                          onClick={() => chanceState("delete", item)}
-                        >
-                          <MdBookmarkRemove />
-                        </button>
-                      </>
-                    )}
+            {loadingTasks ? (
+              infoOfMonth[infoDay] && infoOfMonth[infoDay].length > 0 ? (
+                <>
+                  {arrayTasks.map((item) => (
+                    <div key={item} className="cont-tasks">
+                      {infoOfMonth[infoDay]?.[item] && (
+                        <>
+                          <h2> {infoOfMonth[infoDay]?.[item]}</h2>
+                          <button
+                            className="delete"
+                            onClick={() => chanceState("delete", item)}
+                          >
+                            <MdBookmarkRemove />
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className="welcome-text">
+                  <h2 onClick={() => chanceCreateTask()}>Crea una tarea</h2>
+                  <img
+                    src={
+                      "https://cdn.prod.website-files.com/64c73d04a946980a4476537e/64cd4d0d89236fc80a3395b4_runner.png"
+                    }
+                  />
+                  <div className="lines">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                   </div>
-                ))}
-              </>
+                  <div className="lines-second">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <div className="lines-third">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <div className="lines-fourth">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+              )
             ) : (
-              <div className="welcome-text">
-                <h2 onClick={() => chanceCreateTask()}>Crea una tarea</h2>
-                <img
-                  src={
-                    "https://cdn.prod.website-files.com/64c73d04a946980a4476537e/64cd4d0d89236fc80a3395b4_runner.png"
-                  }
-                />
-                <div className="lines">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-                <div className="lines-second">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-                <div className="lines-third">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-                <div className="lines-fourth">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-              </div>
+              <div className="cont-loading-task"></div>
             )}
           </div>
         )

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRoutine } from "../context/RoutineContext";
 
 // import
@@ -30,6 +30,8 @@ const CreateRoutine = () => {
     currentDay,
   } = useRoutine();
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     if (!currentDay.id1) {
       navigate(`/calendar-routine`);
@@ -50,27 +52,38 @@ const CreateRoutine = () => {
   };
 
   const nextStage = () => {
-    if (stages === "weekend") {
-      const res = addRoutine();
-
-      if (res) {
-        const nuevaFecha = `/calendar-routine/m/${currentDay.id1}/d/${currentDay.id2}/y/${currentDay.id3}`;
-        navigate(nuevaFecha);
+    setLoading(false);
+    setTimeout(() => {
+      if (openSFD) {
+        if (stages === "weekend") {
+          const res = addRoutine();
+          if (res) {
+            const nuevaFecha = `/calendar-routine/m/${currentDay.id1}/d/${currentDay.id2}/y/${currentDay.id3}`;
+            navigate(nuevaFecha);
+          }
+        } else {
+          setStages("weekend");
+          setCurrentValueInputText("");
+        }
+      } else {
+        createRoutine();
       }
-    } else {
-      setStages("weekend");
-      setCurrentValueInputText("");
-    }
+      setLoading(true);
+    }, 100);
   };
 
   const previousStage = () => {
-    if (stages === "workday") {
-      setOpenSFD(false);
-    }
-    if (stages === "weekend") {
-      setStages("workday");
-      setCurrentValueInputText("");
-    }
+    setLoading(false);
+    setTimeout(() => {
+      if (stages === "workday") {
+        setOpenSFD(false);
+      }
+      if (stages === "weekend") {
+        setStages("workday");
+        setCurrentValueInputText("");
+      }
+      setLoading(true);
+    }, 100);
   };
 
   const addWeekedDay = (i) => {
@@ -81,13 +94,17 @@ const CreateRoutine = () => {
     }
   };
 
+  useEffect(() => {
+    console.log(openSFD);
+  }, [openSFD]);
+
   return (
     <div className="cont-create">
       <div className="steps-to-follow">
         <div className="steps-info">
           {openSFD ? (
             stages === "weekend" ? (
-              <div>
+              <div className={`${loading ? "visible" : "on-visible"}`}>
                 <h1>Add information about your {stages} routine :</h1>
                 <img
                   src={
@@ -96,7 +113,7 @@ const CreateRoutine = () => {
                 />
               </div>
             ) : (
-              <div>
+              <div className={`${loading ? "visible" : "on-visible"}`}>
                 <h1>Add information about your {stages} routine :</h1>
                 <img
                   src={
@@ -106,7 +123,7 @@ const CreateRoutine = () => {
               </div>
             )
           ) : (
-            <div>
+            <div className={`${loading ? "visible" : "on-visible"}`}>
               <h1>Select rest days:</h1>
               <img
                 src={
@@ -124,9 +141,7 @@ const CreateRoutine = () => {
         ) : (
           <div className="next-previous">
             <button onClick={retroceder}>Back</button>
-            <button className="next" onClick={createRoutine}>
-              next
-            </button>
+            <button onClick={nextStage}>next</button>
           </div>
         )}
         <div className="steps">
