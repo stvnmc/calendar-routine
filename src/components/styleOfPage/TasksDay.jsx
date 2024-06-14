@@ -13,11 +13,12 @@ const TasksDay = ({
   infoOfMonth,
   addTaskDay,
   deleteTaskDay,
+  loadingTextDayTask,
 }) => {
   const [inputValue, setInputValue] = useState("");
   const [createTask, setCreateTask] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [loadingTasks, setLoadingTasks] = useState(false);
+  const [loadingTasks, setLoadingTasks] = useState(true);
   const [arrayTasks, setArrayTasks] = useState([0, 1, 2, 3, 4, 5, 6]);
 
   useEffect(() => {
@@ -39,7 +40,11 @@ const TasksDay = ({
       });
     }
 
-    if (Object.keys(infoOfMonth).length) setLoadingTasks(true);
+    if (
+      Object.keys(infoOfMonth).length ||
+      Object.keys(infoOfMonth).length === 0
+    )
+      setLoadingTasks(true);
   }, [infoOfMonth, infoDay]);
 
   const chanceState = async (type, i) => {
@@ -73,7 +78,7 @@ const TasksDay = ({
   return (
     <div className="select-day-taks">
       <div className="task-cont-header">
-        <h1>
+        <h1 className={`${loadingTextDayTask ? "visible" : "on-visible"}`}>
           {dayNames[dayOfWeek]} - {infoDay}
         </h1>
         {type === "current" && (
@@ -111,7 +116,7 @@ const TasksDay = ({
                     <div key={item} className="cont-tasks">
                       {infoOfMonth[infoDay]?.[item] && (
                         <>
-                          <h2> {infoOfMonth[infoDay]?.[item]}</h2>
+                          <h2>{infoOfMonth[infoDay]?.[item]}</h2>
                           <button
                             className="delete"
                             onClick={() => chanceState("delete", item)}

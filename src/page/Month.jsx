@@ -32,15 +32,17 @@ const Month = () => {
   useEffect(() => {
     getCalendar();
     getInfoTasksClandarar();
-    getDaySeledt();
+    getDaySelect();
     setLocation("month");
   }, [user, id1]);
+
+  const [loadingTextDayTask, setloadingTextDayTask] = useState(true);
 
   useEffect(() => {
     setLocationDate([id1, daySelect, id2]);
   }, [daySelect]);
 
-  const getDaySeledt = () => {
+  const getDaySelect = () => {
     const daySave = localStorage.getItem("selectDay");
 
     if (daySave) {
@@ -113,6 +115,7 @@ const Month = () => {
                 setDaySelect={setDaySelect}
                 infoOfMonth={infoOfMonth[dayNumber]}
                 daySelect={daySelect}
+                setloadingTextDayTask={setloadingTextDayTask}
               />
             ))}
           </div>
@@ -126,6 +129,7 @@ const Month = () => {
           infoOfMonth={infoOfMonth}
           deleteTaskDay={deleteTaskDay}
           type={"current"}
+          loadingTextDayTask={loadingTextDayTask}
         />
       </div>
       <Footer />

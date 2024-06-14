@@ -35,8 +35,21 @@ export const MonthDataProvider = ({ children }) => {
     if (!user || typeof user !== "string") {
       return;
     }
+
     try {
+      const monthNames = monthsNames[monthNumber - 1];
       const collectionName = user + year;
+
+      //  navegando sin registrarse
+      if (user === "welcome") {
+        const info = localStorage.getItem(`firstTime${year}`);
+        if (info !== null) {
+          const newData = JSON.parse(info);
+
+          setInfoOfMonth(newData[monthsNames[monthNumber - 1]]);
+        }
+        return;
+      }
 
       const ress = await collectionExists(collectionName);
 
@@ -44,7 +57,6 @@ export const MonthDataProvider = ({ children }) => {
         await createCollection(collectionName);
         return;
       }
-      const monthNames = monthsNames[monthNumber - 1];
 
       const docRef = doc(db, collectionName, monthNames);
 
@@ -59,11 +71,37 @@ export const MonthDataProvider = ({ children }) => {
   }
 
   async function addTaskDay(year, monthNumber, day, taskValue) {
-    const monthNames = monthsNames[monthNumber - 1];
-    const collectionName = user + year;
-
-    const docRef = doc(db, collectionName, monthNames);
     try {
+      const monthNames = monthsNames[monthNumber - 1];
+
+      //  navegando  con registro en localStore
+      if (user === "welcome") {
+        const infoArraysMonths = localStorage.getItem(`firstTime${year}`);
+
+        let arraysMonths = [];
+
+        if (infoArraysMonths !== null) {
+          arraysMonths = JSON.parse(infoArraysMonths);
+        } else {
+          arraysMonths = months;
+        }
+
+        if (arraysMonths[monthNames].hasOwnProperty(day)) {
+          arraysMonths[monthNames][day].push(taskValue);
+        } else {
+          arraysMonths[monthNames][day] = [taskValue];
+        }
+        localStorage.setItem(`firstTime${year}`, JSON.stringify(arraysMonths));
+        await getInfoTaskDay(year, monthNumber);
+        return;
+      }
+
+      //  navegando  con registro en base de datos
+
+      const collectionName = user + year;
+
+      const docRef = doc(db, collectionName, monthNames);
+
       const docSnapshot = await getDoc(docRef);
       const data = docSnapshot.data();
       if (data.hasOwnProperty(day)) {
@@ -83,13 +121,24 @@ export const MonthDataProvider = ({ children }) => {
   }
 
   async function deleteTaskDay(year, monthNumber, day, index) {
-    const monthNames = monthsNames[monthNumber - 1];
-
-    const collectionName = user + year;
-
-    const docRef = doc(db, collectionName, monthNames);
-
     try {
+      const monthNames = monthsNames[monthNumber - 1];
+
+      if (user === "welcome") {
+        const infoArraysMonths = localStorage.getItem(`firstTime${year}`);
+
+        let arraysMonths = JSON.parse(infoArraysMonths);
+        arraysMonths[monthNames][day].splice(index, 1);
+
+        localStorage.setItem(`firstTime${year}`, JSON.stringify(arraysMonths));
+        await getInfoTaskDay(year, monthNumber);
+        return;
+      }
+
+      const collectionName = user + year;
+
+      const docRef = doc(db, collectionName, monthNames);
+
       const docSnap = await getDoc(docRef);
 
       const data = docSnap.data();

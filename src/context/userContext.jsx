@@ -23,7 +23,6 @@ export const useUser = () => {
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [errors, setErrors] = useState([]);
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   const [location, setLocation] = useState("");
   const [locationDate, setLocationDate] = useState(null);
@@ -36,21 +35,18 @@ export const UserProvider = ({ children }) => {
   async function signup(email, password) {
     try {
       const res = await createUserWithEmailAndPassword(dbAuth, email, password);
-
       const emailParts = res.user.email.split("@");
+
       const username = emailParts[0];
       setUser(username);
 
       localStore(username, res.user.accessToken);
-      setIsAuthenticated(true);
     } catch (error) {
+      console.log(error);
       let errorMessage = error.code;
-      // Verifica si el error comienza con 'auth/'
       if (error.code.startsWith("auth/")) {
-        // Elimina 'auth/' del código de error
         errorMessage = error.code.slice(5);
       }
-      // Elimina todos los guiones (-) del mensaje de error
       errorMessage = errorMessage.replace(/-/g, " ");
       setErrors(errorMessage);
     }
@@ -65,15 +61,11 @@ export const UserProvider = ({ children }) => {
       setUser(username);
 
       localStore(username, res.user.accessToken);
-      setIsAuthenticated(true);
     } catch (error) {
       let errorMessage = error.code;
-      // Verifica si el error comienza con 'auth/'
       if (error.code.startsWith("auth/")) {
-        // Elimina 'auth/' del código de error
         errorMessage = error.code.slice(5);
       }
-      // Elimina todos los guiones (-) del mensaje de error
       errorMessage = errorMessage.replace(/-/g, " ");
       setErrors(errorMessage);
     }
@@ -84,10 +76,13 @@ export const UserProvider = ({ children }) => {
       await signOut(dbAuth);
       setUser(null);
       localStorage.removeItem("Calendar");
-      setIsAuthenticated(false);
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
     }
+  }
+
+  async function firstTime() {
+    await signin("Welcome@gmail.com", "12345678");
   }
 
   useEffect(() => {
@@ -104,11 +99,11 @@ export const UserProvider = ({ children }) => {
     if (storedInfo !== null) {
       const info = JSON.parse(storedInfo);
       const name = info[0].name;
-      setIsAuthenticated(true);
+
       setUser(name);
-    } else {
-      setIsAuthenticated(false);
+      return;
     }
+    firstTime();
   }, []);
 
   return (
@@ -118,9 +113,7 @@ export const UserProvider = ({ children }) => {
         signup,
         signin,
         errors,
-        isAuthenticated,
         logout,
-        setIsAuthenticated,
         location,
         setLocation,
         setLocationDate,

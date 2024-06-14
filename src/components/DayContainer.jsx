@@ -10,16 +10,24 @@ const DayContainer = ({
   handleMonthChange,
   infoOfMonth,
   daySelect,
+  setloadingTextDayTask,
 }) => {
   const addSelectDay = () => {
-    if (type === "former") {
-      handleMonthChange(-1);
-    } else if (type === "next") {
-      handleMonthChange(1);
-    }
-    setDaySelect(dayNumber);
-    localStorage.setItem("selectDay", dayNumber);
+    setloadingTextDayTask(false);
+
+    setTimeout(() => {
+      if (type === "former") {
+        handleMonthChange(-1);
+      } else if (type === "next") {
+        handleMonthChange(1);
+      }
+      setDaySelect(dayNumber);
+      localStorage.setItem("selectDay", dayNumber);
+
+      setloadingTextDayTask(true);
+    }, 100);
   };
+
   return (
     <div
       className={`containers ${type} ${

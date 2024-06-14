@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../context/userContext";
-import { FaArrowLeft } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
-const LoginPage = () => {
-  const { signin, errors, isAuthenticated } = useUser();
-  const navigate = useNavigate();
+const Register = () => {
+  const { signup, errors } = useUser();
+
   const [showTextEmail, setShowTextEmail] = useState(false);
   const [showTextPassword, setShowTextPassword] = useState(false);
 
-  useEffect(() => {
-    if (isAuthenticated) navigate("/calendar-routine");
-  }, [isAuthenticated]);
-
   const login = async (e) => {
     e.preventDefault();
-    await signin(e.target.email.value, e.target.password.value);
+
+    await signup(e.target.email.value, e.target.password.value);
   };
+
+  // useEffect(() => {
+  //   if (isAuthenticated) navigate("/calendar-routine");
+  // }, [isAuthenticated]);
 
   const handleClick = (type) => {
     if (type === "email") setShowTextEmail(true);
@@ -47,12 +47,11 @@ const LoginPage = () => {
       </div>
       <div className="main-container">
         <div className="title">
-          <h1>Welcome to calendar calendar name</h1>
+          <h1>Bienvenidos a calendar nombre del calendario</h1>
         </div>
         <div className="error">
           <h2>{errors}</h2>
         </div>
-
         <form onSubmit={login} className="df-c">
           <div className={showTextEmail ? "cont df-c show" : "cont df-c"}>
             <label>Email</label>
@@ -65,6 +64,7 @@ const LoginPage = () => {
               autoComplete="off"
             />
           </div>
+
           <div className={showTextPassword ? "cont df-c show" : "cont df-c"}>
             <label>Password</label>
             <input
@@ -76,20 +76,15 @@ const LoginPage = () => {
               autoComplete="off"
             />
           </div>
-          <button>Login</button>
+          <button>Register</button>
         </form>
 
         <p>
-          Don't have an account?
+          You have an account?
           <span>
-            <Link to="/calendar-routine/register">Sign Up</Link>
+            <Link to="/Login">Login</Link>
           </span>
         </p>
-        <Link to="/calendar-routine">
-          <div className="go-back">
-            <FaArrowLeft />
-          </div>
-        </Link>
       </div>
       <div className="img-login">
         <img
@@ -102,4 +97,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Register;

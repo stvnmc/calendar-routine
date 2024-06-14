@@ -2,13 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import DigitalClock from "./DigitalClock";
 import { useUser } from "../../context/userContext";
 import { IoIosSettings } from "react-icons/io";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Login from "../Login";
+import Register from "../Register";
 
 const NavBarMonth = () => {
   const { user, logout, location, locationDate } = useUser();
   const [openSetting, setOpenSetting] = useState(false);
+  const [openLoadingRegister, setOpenLoadingRegister] = useState(false);
+
   const divRef = useRef(null);
-  const navigate = useNavigate();
 
   const handleClickOutside = (event) => {
     if (divRef.current && !divRef.current.contains(event.target)) {
@@ -79,12 +82,22 @@ const NavBarMonth = () => {
           <div className="setting" ref={divRef}>
             <div onClick={() => console.log("hla")}></div>
             <h2>Dark modo</h2>
-            <h2>Contact me</h2>
+            <h2>Chance Spanish</h2>
             <div className="linea"></div>
-            <h2 onClick={logout}>Logout</h2>
+            {user === "welcome" ? (
+              <>
+                <h2>Login</h2>
+                <h2>Register</h2>
+              </>
+            ) : (
+              <h2 onClick={logout}>Logout</h2>
+            )}
           </div>
         )}
       </div>
+
+      <Login />
+      <Register />
     </div>
   );
 };
