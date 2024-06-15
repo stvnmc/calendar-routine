@@ -41,6 +41,7 @@ export const UserProvider = ({ children }) => {
       setUser(username);
 
       localStore(username, res.user.accessToken);
+      return true;
     } catch (error) {
       console.log(error);
       let errorMessage = error.code;

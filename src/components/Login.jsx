@@ -3,15 +3,14 @@ import { useUser } from "../context/userContext";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
-const Login = () => {
-  const { signin, errors, isAuthenticated } = useUser();
-  const navigate = useNavigate();
+const Login = ({
+  setLoadingRegister,
+  divLoginRegisterRef,
+  setOpenLoadingRegister,
+}) => {
+  const { signin, errors } = useUser();
   const [showTextEmail, setShowTextEmail] = useState(false);
   const [showTextPassword, setShowTextPassword] = useState(false);
-
-  useEffect(() => {
-    if (isAuthenticated) navigate("/calendar-routine");
-  }, [isAuthenticated]);
 
   const login = async (e) => {
     e.preventDefault();
@@ -45,7 +44,7 @@ const Login = () => {
           }
         />
       </div>
-      <div className="main-container">
+      <div className="main-container" ref={divLoginRegisterRef}>
         <div className="title">
           <h1>Welcome to calendar calendar name</h1>
         </div>
@@ -81,15 +80,12 @@ const Login = () => {
 
         <p>
           Don't have an account?
-          <span>
-            <Link to="/calendar-routine/register">Sign Up</Link>
-          </span>
+          <span onClick={() => setLoadingRegister(false)}>Sign Up</span>
         </p>
-        <Link to="/calendar-routine">
-          <div className="go-back">
-            <FaArrowLeft />
-          </div>
-        </Link>
+
+        <div className="go-back" onClick={() => setOpenLoadingRegister(false)}>
+          <FaArrowLeft />
+        </div>
       </div>
       <div className="img-login">
         <img

@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../context/userContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
-const Register = () => {
+const Register = ({
+  setLoadingRegister,
+  divLoginRegisterRef,
+  setOpenLoadingRegister,
+}) => {
   const { signup, errors } = useUser();
-
   const [showTextEmail, setShowTextEmail] = useState(false);
   const [showTextPassword, setShowTextPassword] = useState(false);
 
   const login = async (e) => {
     e.preventDefault();
 
-    await signup(e.target.email.value, e.target.password.value);
+    const res = await signup(e.target.email.value, e.target.password.value);
+    if (res) setOpenLoadingRegister(false);
   };
-
-  // useEffect(() => {
-  //   if (isAuthenticated) navigate("/calendar-routine");
-  // }, [isAuthenticated]);
 
   const handleClick = (type) => {
     if (type === "email") setShowTextEmail(true);
@@ -45,7 +46,7 @@ const Register = () => {
           }
         />
       </div>
-      <div className="main-container">
+      <div className="main-container" ref={divLoginRegisterRef}>
         <div className="title">
           <h1>Bienvenidos a calendar nombre del calendario</h1>
         </div>
@@ -81,10 +82,11 @@ const Register = () => {
 
         <p>
           You have an account?
-          <span>
-            <Link to="/Login">Login</Link>
-          </span>
+          <span onClick={() => setLoadingRegister(true)}>Login</span>
         </p>
+        <div className="go-back" onClick={() => setOpenLoadingRegister(false)}>
+          <FaArrowLeft />
+        </div>
       </div>
       <div className="img-login">
         <img

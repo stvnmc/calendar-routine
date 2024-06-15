@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { Children, useEffect, useRef, useState } from "react";
 import DigitalClock from "./DigitalClock";
 import { useUser } from "../../context/userContext";
 import { IoIosSettings } from "react-icons/io";
@@ -10,8 +10,11 @@ const NavBarMonth = () => {
   const { user, logout, location, locationDate } = useUser();
   const [openSetting, setOpenSetting] = useState(false);
   const [openLoadingRegister, setOpenLoadingRegister] = useState(false);
+  const [loadingRegister, setLoadingRegister] = useState(false);
 
   const divRef = useRef(null);
+  const divLoginRegisterRef = useRef(null);
+  console.log(user);
 
   const handleClickOutside = (event) => {
     if (divRef.current && !divRef.current.contains(event.target)) {
@@ -25,6 +28,25 @@ const NavBarMonth = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutsideLoginRegister);
+    return () => {
+      document.removeEventListener(
+        "mousedown",
+        handleClickOutsideLoginRegister
+      );
+    };
+  }, []);
+
+  const handleClickOutsideLoginRegister = (event) => {
+    if (
+      divLoginRegisterRef.current &&
+      !divLoginRegisterRef.current.contains(event.target)
+    ) {
+      setOpenLoadingRegister(false);
+    }
+  };
 
   const today = new Date();
   const day = today.getDate();
@@ -58,6 +80,10 @@ const NavBarMonth = () => {
     return { transform: `translateX(${translateMap[location]})` };
   };
 
+  const chanceOpenLoadingRegister = () => {
+    setOpenLoadingRegister(true);
+  };
+
   return (
     <div className="top-bar-calendario">
       <DigitalClock />
@@ -86,8 +112,8 @@ const NavBarMonth = () => {
             <div className="linea"></div>
             {user === "welcome" ? (
               <>
-                <h2>Login</h2>
-                <h2>Register</h2>
+                <h2 onClick={chanceOpenLoadingRegister}>Login</h2>
+                <h2 onClick={chanceOpenLoadingRegister}>Register</h2>
               </>
             ) : (
               <h2 onClick={logout}>Logout</h2>
@@ -95,9 +121,25 @@ const NavBarMonth = () => {
           </div>
         )}
       </div>
-
-      <Login />
-      <Register />
+      {openLoadingRegister ? (
+        loadingRegister ? (
+          <Login
+            setLoadingRegister={setLoadingRegister}
+            setOpenLoadingRegister={setOpenLoadingRegister}
+            divLoginRegisterRef={divLoginRegisterRef}
+          >
+            {Children}
+          </Login>
+        ) : (
+          <Register
+            setLoadingRegister={setLoadingRegister}
+            setOpenLoadingRegister={setOpenLoadingRegister}
+            divLoginRegisterRef={divLoginRegisterRef}
+          >
+            {Children}
+          </Register>
+        )
+      ) : null}
     </div>
   );
 };
