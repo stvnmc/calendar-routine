@@ -29,7 +29,34 @@ export const MonthDataProvider = ({ children }) => {
   const [infoOfMonth, setInfoOfMonth] = useState([]);
 
   const { user } = useUser();
-  // firebase
+
+  // add collection localstore
+  async function addCollectionNewUser(userState, year, info) {
+    const collectionName = userState + year;
+    console.log(userState);
+
+    try {
+      const collectionRef = collection(db, collectionName);
+      const batch = writeBatch(db);
+
+      for (const monthName in info) {
+        const docRef = doc(collectionRef, monthName);
+        console.log(info[monthName]);
+        batch.set(docRef, info[monthName]);
+      }
+
+      await batch.commit();
+
+      localStorage.removeItem(`firstTime${year}`);
+
+      return true;
+    } catch (error) {
+      console.error("Error al crear la colección:", error);
+      return false;
+    }
+  }
+
+  // modifier collection
 
   async function getInfoTaskDay(year, monthNumber) {
     if (!user || typeof user !== "string") {
@@ -43,12 +70,12 @@ export const MonthDataProvider = ({ children }) => {
       //  navegando sin registrarse
       if (user === "welcome") {
         const info = localStorage.getItem(`firstTime${year}`);
-        if (info !== null) {
-          const newData = JSON.parse(info);
-
-          setInfoOfMonth(newData[monthsNames[monthNumber - 1]]);
+        if (info === null) {
+          setInfoOfMonth([]);
+          return;
         }
-        return;
+        const newData = JSON.parse(info);
+        setInfoOfMonth(newData[monthsNames[monthNumber - 1]]);
       }
 
       const ress = await collectionExists(collectionName);
@@ -197,6 +224,7 @@ export const MonthDataProvider = ({ children }) => {
         getInfoTaskDay,
         deleteTaskDay,
         setInfoOfMonth,
+        addCollectionNewUser,
       }}
     >
       {children}

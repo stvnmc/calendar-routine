@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useUser } from "../context/userContext";
-import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import { useMonthData } from "../context/MonthDataContext";
 
 const Register = ({
   setLoadingRegister,
   divLoginRegisterRef,
   setOpenLoadingRegister,
+  year,
+  month,
 }) => {
-  const { signup, errors } = useUser();
+  const { signup, errors, setUser } = useUser();
+  const { addCollectionNewUser } = useMonthData();
   const [showTextEmail, setShowTextEmail] = useState(false);
   const [showTextPassword, setShowTextPassword] = useState(false);
 
@@ -16,7 +19,19 @@ const Register = ({
     e.preventDefault();
 
     const res = await signup(e.target.email.value, e.target.password.value);
-    if (res) setOpenLoadingRegister(false);
+    if (!res) return;
+
+    setTimeout(() => {
+      const storedInfo = localStorage.getItem(`firstTime${year}`);
+      const name = localStorage.getItem("Calendar");
+      if (storedInfo) {
+        const infoUser = JSON.parse(name);
+        const info = JSON.parse(storedInfo);
+        setUser(infoUser[0].name);
+        addCollectionNewUser(infoUser[0].name, year, info);
+      }
+    }, 100);
+    setOpenLoadingRegister(false);
   };
 
   const handleClick = (type) => {

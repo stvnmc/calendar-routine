@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../context/userContext";
 import { FaArrowLeft } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
 
 const Login = ({
   setLoadingRegister,
@@ -14,7 +13,8 @@ const Login = ({
 
   const login = async (e) => {
     e.preventDefault();
-    await signin(e.target.email.value, e.target.password.value);
+    const res = await signin(e.target.email.value, e.target.password.value);
+    if (res) setOpenLoadingRegister(false);
   };
 
   const handleClick = (type) => {

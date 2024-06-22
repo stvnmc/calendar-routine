@@ -41,27 +41,28 @@ export const UserProvider = ({ children }) => {
       setUser(username);
 
       localStore(username, res.user.accessToken);
+
       return true;
     } catch (error) {
-      console.log(error);
       let errorMessage = error.code;
       if (error.code.startsWith("auth/")) {
         errorMessage = error.code.slice(5);
       }
       errorMessage = errorMessage.replace(/-/g, " ");
       setErrors(errorMessage);
+      return false;
     }
   }
 
   async function signin(email, password) {
     try {
       const res = await signInWithEmailAndPassword(dbAuth, email, password);
-
       const emailParts = res.user.email.split("@");
       const username = emailParts[0];
       setUser(username);
 
       localStore(username, res.user.accessToken);
+      return true;
     } catch (error) {
       let errorMessage = error.code;
       if (error.code.startsWith("auth/")) {
@@ -75,15 +76,12 @@ export const UserProvider = ({ children }) => {
   async function logout() {
     try {
       await signOut(dbAuth);
-      setUser(null);
       localStorage.removeItem("Calendar");
+      setUser("welcome");
+      console.log("1 logout");
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
     }
-  }
-
-  async function firstTime() {
-    await signin("Welcome@gmail.com", "12345678");
   }
 
   useEffect(() => {
@@ -97,20 +95,23 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const storedInfo = localStorage.getItem("Calendar");
-    if (storedInfo !== null) {
-      const info = JSON.parse(storedInfo);
-      const name = info[0].name;
-
-      setUser(name);
+    if (storedInfo === null) {
+      setUser("welcome");
+      console.log("2");
       return;
     }
-    firstTime();
+
+    const info = JSON.parse(storedInfo);
+    const name = info[0].name;
+
+    setUser(name);
   }, []);
 
   return (
     <userContext.Provider
       value={{
         user,
+        setUser,
         signup,
         signin,
         errors,

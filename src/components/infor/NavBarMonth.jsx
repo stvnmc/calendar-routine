@@ -14,7 +14,6 @@ const NavBarMonth = () => {
 
   const divRef = useRef(null);
   const divLoginRegisterRef = useRef(null);
-  console.log(user);
 
   const handleClickOutside = (event) => {
     if (divRef.current && !divRef.current.contains(event.target)) {
@@ -80,8 +79,9 @@ const NavBarMonth = () => {
     return { transform: `translateX(${translateMap[location]})` };
   };
 
-  const chanceOpenLoadingRegister = () => {
+  const chanceOpenLoadingRegister = (value) => {
     setOpenLoadingRegister(true);
+    setLoadingRegister(value);
   };
 
   return (
@@ -112,8 +112,10 @@ const NavBarMonth = () => {
             <div className="linea"></div>
             {user === "welcome" ? (
               <>
-                <h2 onClick={chanceOpenLoadingRegister}>Login</h2>
-                <h2 onClick={chanceOpenLoadingRegister}>Register</h2>
+                <h2 onClick={() => chanceOpenLoadingRegister(true)}>Login</h2>
+                <h2 onClick={() => chanceOpenLoadingRegister(false)}>
+                  Register
+                </h2>
               </>
             ) : (
               <h2 onClick={logout}>Logout</h2>
@@ -135,6 +137,8 @@ const NavBarMonth = () => {
             setLoadingRegister={setLoadingRegister}
             setOpenLoadingRegister={setOpenLoadingRegister}
             divLoginRegisterRef={divLoginRegisterRef}
+            year={year}
+            month={month}
           >
             {Children}
           </Register>

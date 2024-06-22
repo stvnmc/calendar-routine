@@ -15,7 +15,7 @@ const Month = () => {
   const { id1, id2 } = useParams();
 
   const navigate = useNavigate();
-  const [infoCalendar, setinfoCalendar] = useState([]);
+  const [infoCalendar, setInfoCalendar] = useState([]);
   const [daySelect, setDaySelect] = useState(1);
 
   const {
@@ -31,7 +31,7 @@ const Month = () => {
 
   useEffect(() => {
     getCalendar();
-    getInfoTasksClandarar();
+    getInfoTasksCalendar();
     getDaySelect();
     setLocation("month");
   }, [user, id1]);
@@ -56,7 +56,7 @@ const Month = () => {
 
   const getCalendar = async () => {
     const calendarInfo = await getInfoCalendar(id1, id2);
-    setinfoCalendar(calendarInfo);
+    setInfoCalendar(calendarInfo);
   };
 
   const handleMonthChange = (delta) => {
@@ -75,7 +75,7 @@ const Month = () => {
     navigate(nuevaFecha);
   };
 
-  const getInfoTasksClandarar = async () => {
+  const getInfoTasksCalendar = async () => {
     setLoadingMonth(false);
     await getInfoTaskDay(id2, id1);
     setLoadingMonth(true);
