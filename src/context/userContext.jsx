@@ -22,6 +22,7 @@ export const useUser = () => {
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const [location, setLocation] = useState("");
@@ -41,7 +42,7 @@ export const UserProvider = ({ children }) => {
       setUser(username);
 
       localStore(username, res.user.accessToken);
-
+      setIsAuthenticated(true);
       return true;
     } catch (error) {
       let errorMessage = error.code;
@@ -62,6 +63,7 @@ export const UserProvider = ({ children }) => {
       setUser(username);
 
       localStore(username, res.user.accessToken);
+      setIsAuthenticated(true);
       return true;
     } catch (error) {
       let errorMessage = error.code;
@@ -78,7 +80,7 @@ export const UserProvider = ({ children }) => {
       await signOut(dbAuth);
       localStorage.removeItem("Calendar");
       setUser("welcome");
-      console.log("1 logout");
+      setIsAuthenticated(false);
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
     }
@@ -97,10 +99,11 @@ export const UserProvider = ({ children }) => {
     const storedInfo = localStorage.getItem("Calendar");
     if (storedInfo === null) {
       setUser("welcome");
-      console.log("2");
+      setIsAuthenticated(false);
+
       return;
     }
-
+    setIsAuthenticated(true);
     const info = JSON.parse(storedInfo);
     const name = info[0].name;
 
@@ -120,6 +123,7 @@ export const UserProvider = ({ children }) => {
         setLocation,
         setLocationDate,
         locationDate,
+        isAuthenticated
       }}
     >
       {children}

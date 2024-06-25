@@ -2,25 +2,29 @@ import React, { Children, useEffect, useRef, useState } from "react";
 import DigitalClock from "./DigitalClock";
 import { useUser } from "../../context/userContext";
 import { IoIosSettings } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Login from "../Login";
 import Register from "../Register";
 
 const NavBarMonth = () => {
-  const { user, logout, location, locationDate } = useUser();
+  // Context
+  const { user, logout, location, locationDate, isAuthenticated } = useUser();
+  // State
   const [openSetting, setOpenSetting] = useState(false);
   const [openLoadingRegister, setOpenLoadingRegister] = useState(false);
   const [loadingRegister, setLoadingRegister] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const divRef = useRef(null);
   const divLoginRegisterRef = useRef(null);
+  const navigate = useNavigate();
 
-  const handleClickOutside = (event) => {
-    if (divRef.current && !divRef.current.contains(event.target)) {
-      setOpenSetting(false);
-    }
-  };
+  const today = new Date();
+  const day = today.getDate();
+  const month = today.getMonth() + 1;
+  const year = today.getFullYear();
 
+  // Effect
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -38,6 +42,22 @@ const NavBarMonth = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode");
+      document.body.classList.remove("light-mode");
+    } else {
+      document.body.classList.add("light-mode");
+      document.body.classList.remove("dark-mode");
+    }
+  }, [darkMode]);
+
+  const handleClickOutside = (event) => {
+    if (divRef.current && !divRef.current.contains(event.target)) {
+      setOpenSetting(false);
+    }
+  };
+
   const handleClickOutsideLoginRegister = (event) => {
     if (
       divLoginRegisterRef.current &&
@@ -46,11 +66,6 @@ const NavBarMonth = () => {
       setOpenLoadingRegister(false);
     }
   };
-
-  const today = new Date();
-  const day = today.getDate();
-  const month = today.getMonth() + 1;
-  const year = today.getFullYear();
 
   const goToPageDay = () => {
     const daySave = localStorage.getItem("selectDay");
@@ -66,7 +81,15 @@ const NavBarMonth = () => {
         nuevaFecha = [month, day, year];
       }
     }
-    return `/calendar-routine/m/${nuevaFecha[0]}/d/${nuevaFecha[1]}/y/${nuevaFecha[2]}`;
+
+    if (isAuthenticated) {
+      navigate(
+        `/calendar-routine/m/${nuevaFecha[0]}/d/${nuevaFecha[1]}/y/${nuevaFecha[2]}`
+      );
+    } else {
+      setOpenLoadingRegister(true);
+      setLoadingRegister(true);
+    }
   };
 
   const conditionalStyle = () => {
@@ -84,6 +107,10 @@ const NavBarMonth = () => {
     setLoadingRegister(value);
   };
 
+  const chanceDarkModo = () => {
+    setDarkMode((prevMode) => !prevMode);
+  };
+
   return (
     <div className="top-bar-calendario">
       <DigitalClock />
@@ -95,9 +122,13 @@ const NavBarMonth = () => {
         <Link to={`/calendar-routine/month/${month + 1}/${year}`}>
           <h1 className={location === "month" ? "hover" : ""}>Calendar</h1>
         </Link>
-        <Link to={goToPageDay()}>
-          <h1 className={location === "routine" ? "hover" : ""}>Routine</h1>
-        </Link>
+
+        <h1
+          onClick={goToPageDay}
+          className={location === "routine" ? "hover" : ""}
+        >
+          Routine
+        </h1>
       </div>
       <div className={`user-setting ${openSetting ? "hover" : ""}`}>
         <h1>{user}</h1>
@@ -107,7 +138,7 @@ const NavBarMonth = () => {
         {openSetting && (
           <div className="setting" ref={divRef}>
             <div onClick={() => console.log("hla")}></div>
-            <h2>Dark modo</h2>
+            <h2 onClick={chanceDarkModo}>Dark modo</h2>
             <h2>Chance Spanish</h2>
             <div className="linea"></div>
             {user === "welcome" ? (

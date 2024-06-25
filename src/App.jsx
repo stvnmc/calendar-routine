@@ -5,6 +5,7 @@ import Month from "./page/Month";
 import Day from "./page/Day";
 import CreateRoutine from "./page/CreateRoutine";
 import NavBarMonth from "./components/infor/NavBarMonth";
+import ProtectedRoute from "./ProtectedRouter";
 
 function App() {
   return (
@@ -18,10 +19,12 @@ function App() {
           path="/calendar-routine/m/:id1/d/:id2/y/:id3"
           element={<Day />}
         />
-        <Route
-          path="/calendar-routine/create-routine"
-          element={<CreateRoutine />}
-        />
+        <Route element={<ProtectedRoute />}>
+          <Route
+            path="/calendar-routine/create-routine"
+            element={<CreateRoutine />}
+          />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
