@@ -12,9 +12,11 @@
 
 body.light-mode {
   --color-text: #e2e3e4;
-  --color-background: #0f0f0e;
-  --color-primary: #888888;
+  --color-background: #161616;
+  --color-primary: #353333;
   --color-button: #cecbc8;
+  --color-task: #a69583;
+  --color-day-next: #656458;
 }
 
 body.dark-mode {
@@ -22,6 +24,8 @@ body.dark-mode {
   --color-text: #0f0f0e;
   --color-background: #e2e3e4;
   --color-button: #565554;
+  --color-task: #ccbeaf;
+  --color-day-next: #e1dbc1;
 }
 
 body {
@@ -307,7 +311,8 @@ button {
   position: relative;
   min-width: 400px;
   max-width: 500px;
-  background: #f7f3f3;
+  color: var(--color-text);
+  background: var(--color-background);
   width: 24vw;
   height: 60vh;
   display: flex;
@@ -354,7 +359,7 @@ button {
   top: -18px;
   left: 1px;
   font-size: 17px;
-  color: rgba(73, 72, 72, 0.932);
+  color: var(--color-text);
   font-family: "Arial", sans-serif;
 }
 
@@ -363,18 +368,21 @@ button {
   background-color: transparent;
   border: none;
   font-size: 19px;
-  border-bottom: solid rgba(73, 72, 72, 0.932);
-  color: rgba(73, 72, 72, 0.932);
+  border-bottom: solid var(--color-text);
+  color: var(--color-text);
 }
 
 .cont.df-c input[type="password"]::placeholder {
-  color: rgba(73, 72, 72, 0.932);
+  color: var(--color-text);
+}
+.cont.df-c input[type="email"]::placeholder {
+  color: var(--color-text);
 }
 .main-container button {
   height: 50px;
   background-color: transparent;
-  border: solid rgba(73, 72, 72, 0.932);
-  color: rgba(73, 72, 72, 0.932);
+  border: solid var(--color-text);
+  color: var(--color-text);
   margin: 30px 0 40px;
   font-size: 19px;
 }
@@ -628,7 +636,7 @@ footer img {
 .select-day-taks {
   position: relative;
   width: 34vw;
-  background: #a69583;
+  background: var(--color-task);
   border-radius: 5px;
   border: none;
   border-right: 0.4vh solid #706b6b;
@@ -741,11 +749,11 @@ footer img {
   right: -55px;
   width: 185px;
   height: 208px;
-  background: #d0cfce;
+  background: var(--color-background);
   border-radius: 5px;
   border: none;
-  border-right: 0.4vh solid #4e4e4e;
-  border-bottom: 0.4vh solid #4e4e4e;
+  border-right: 0.4vh solid var(--color-button);
+  border-bottom: 0.4vh solid var(--color-button);
   overflow: hidden;
   z-index: 1;
 }
@@ -761,7 +769,7 @@ footer img {
 }
 
 .setting h2:hover {
-  background-color: #b8b6b6;
+  background-color: #b8b6b640;
 }
 
 .setting .linea {
@@ -822,9 +830,10 @@ footer img {
 }
 
 .days {
+  overflow: hidden;
   display: grid;
   height: 448px;
-  gap: 0.3% 0.3%;
+  gap: 0.6% 0.6%;
   grid-template-columns: repeat(7, 14%);
   grid-template-rows: repeat(6, 16%);
   opacity: 0;
@@ -841,8 +850,8 @@ footer img {
   background-color: var(--color-primary);
   border-radius: 0.5em;
   border: none;
-  border-bottom: 0.3vh solid #575654;
-  border-right: 0.2vw solid #575654;
+  border-bottom: 0.3vh solid var(--color-button);
+  border-right: 0.2vw solid var(--color-button);
 }
 
 .containers h1 {
@@ -925,12 +934,12 @@ footer img {
   text-align: center;
   cursor: pointer;
   font-weight: 300;
-  color: #e6e1e1;
-  background-color: #41403e;
+  color: var(--color-background);
+  background-color: var(--color-button);
   border: none;
   border-radius: 4px;
-  border-bottom: 2px solid #c9c5c0;
-  border-right: 2px solid #c9c5c0;
+  border-bottom: 2px solid var(--color-background);
+  border-right: 2px solid var(--color-background);
   transition: ease 1s;
 }
 
@@ -969,7 +978,7 @@ footer img {
 .lines-second div,
 .lines-third div,
 .lines-fourth div {
-  background-color: #0f0f0e;
+  background-color: var(--color-text);
   margin-left: 20px;
   height: 3px;
   width: 150px;
@@ -1043,8 +1052,8 @@ footer img {
   border-bottom: 0.2vh solid #7a7676;
   border-right: 0.1vw solid #7a7676;
   border-radius: 2px;
-  background: #232423cc;
-  color: #fff;
+  background: var(--color-button);
+  color: var(--color-background);
   transition: 1s;
 }
 
@@ -1099,7 +1108,7 @@ footer img {
 
 .containers.next,
 .containers.former {
-  background: #e1dbc1;
+  background: var(--color-day-next);
 }
 
 .containers.next:hover,
@@ -1109,7 +1118,7 @@ footer img {
 }
 
 .linea {
-  background: #242424;
+  background: var(--color-text);
   width: 80%;
   height: 2px;
   margin-top: 6px;
@@ -1172,7 +1181,7 @@ footer img {
 .logout button,
 .welcome-text button,
 .create-task .add {
-  color: #fff;
+  color: var(--color-background);
   background-color: var(--color-button);
   border: none;
   border-radius: 4px;
