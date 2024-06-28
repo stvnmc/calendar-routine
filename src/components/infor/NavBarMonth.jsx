@@ -13,7 +13,10 @@ const NavBarMonth = () => {
   const [openSetting, setOpenSetting] = useState(false);
   const [openLoadingRegister, setOpenLoadingRegister] = useState(false);
   const [loadingRegister, setLoadingRegister] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(() => {
+    const modo = localStorage.getItem("mode");
+    return modo;
+  });
 
   const divRef = useRef(null);
   const divLoginRegisterRef = useRef(null);
@@ -43,14 +46,24 @@ const NavBarMonth = () => {
   }, []);
 
   useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark-mode");
-      document.body.classList.remove("light-mode");
-    } else {
+    if (darkMode === "light-mode") {
       document.body.classList.add("light-mode");
       document.body.classList.remove("dark-mode");
+      localStorage.setItem("mode", "light-mode");
+    } else {
+      document.body.classList.add("dark-mode");
+      document.body.classList.remove("light-mode");
+      localStorage.setItem("mode", "dark-mode");
     }
   }, [darkMode]);
+
+  useEffect(() => {
+    if (loadingRegister) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "overlay";
+    }
+  }, [loadingRegister]);
 
   const handleClickOutside = (event) => {
     if (divRef.current && !divRef.current.contains(event.target)) {
@@ -64,6 +77,7 @@ const NavBarMonth = () => {
       !divLoginRegisterRef.current.contains(event.target)
     ) {
       setOpenLoadingRegister(false);
+      document.body.style.overflowY = "overlay";
     }
   };
 
@@ -87,6 +101,7 @@ const NavBarMonth = () => {
         `/calendar-routine/m/${nuevaFecha[0]}/d/${nuevaFecha[1]}/y/${nuevaFecha[2]}`
       );
     } else {
+      document.body.style.overflowY = "hidden";
       setOpenLoadingRegister(true);
       setLoadingRegister(true);
     }
@@ -103,12 +118,14 @@ const NavBarMonth = () => {
   };
 
   const chanceOpenLoadingRegister = (value) => {
+    document.body.style.overflowY = "hidden";
     setOpenLoadingRegister(true);
     setLoadingRegister(value);
   };
 
   const chanceDarkModo = () => {
-    setDarkMode((prevMode) => !prevMode);
+    if (darkMode === "light-mode") setDarkMode("dark-mode");
+    if (darkMode === "dark-mode") setDarkMode("light-mode");
   };
 
   return (
@@ -131,7 +148,7 @@ const NavBarMonth = () => {
         </h1>
       </div>
       <div className={`user-setting ${openSetting ? "hover" : ""}`}>
-        <h1>{user}</h1>
+        {!openSetting && <h1>{user}</h1>}
         <button onClick={() => setOpenSetting(true)}>
           <IoIosSettings />
         </button>
