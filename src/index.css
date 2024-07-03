@@ -15,8 +15,10 @@ body.light-mode {
   --color-text: #0f0f0e;
   --color-background: #e2e3e4;
   --color-button: #565554;
+  --color-button-hover: #565554;
   --color-task: #ccbeaf;
   --color-day-next: #e1dbc1;
+
   --img-background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16'%3E%3Cg fill='%23382e24' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
@@ -68,8 +70,8 @@ button {
   flex-direction: column;
   justify-content: space-between;
   color: rgba(249, 243, 243, 0.93);
-  height: 208vh;
   width: 100vw;
+  font-size: 20px;
 }
 
 .home::-webkit-scrollbar {
@@ -90,7 +92,7 @@ button {
 }
 
 .first {
-  margin-top: 19vh;
+  margin: 120px 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -100,8 +102,8 @@ button {
 .grid {
   width: 43vw;
   margin-left: 1vw;
-  margin-bottom: 1vw;
-  min-width: 571px;
+  margin-bottom: 48px;
+  min-width: 467px;
   display: grid;
   grid-template-columns: repeat(5, 20%);
   grid-template-rows: repeat(1, 50%);
@@ -148,10 +150,10 @@ button {
 
 .first-texto .cont-img {
   position: absolute;
-  width: 26vw;
-  min-width: 323px;
-  top: 2vh;
-  right: -189px;
+  width: 233px;
+  min-width: 294px;
+  top: 110px;
+  right: -98px;
 }
 
 .first-texto .cont-img img {
@@ -167,21 +169,14 @@ button {
 }
 
 .first-texto button {
-  height: 8vh;
+  height: 70px;
   min-width: 200px;
   width: 16vw;
-  background: #222d28;
-
-  color: #e2d1bd;
   margin: 7vh 0px 0px;
   font-size: 30px;
   padding: 0 5%;
   font-weight: bolder;
   transition: 0.7s;
-  border-radius: 4px;
-  border: none;
-  border-bottom: 0.3vh solid #c0bcbc;
-  border-right: 0.3vh solid #c0bcbc;
 }
 
 .first-texto button:hover {
@@ -193,31 +188,34 @@ button {
 
 .second {
   display: flex;
-  height: 46vh;
+  margin-bottom: 64px;
   justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap;
 }
 .contSecond {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 .contSecond h1 {
-  color: #e2d1bd;
-  border-bottom: 5px solid #222d28;
-  font-size: 4vw;
+  color: var(--color-text);
+  border-bottom: 5px solid var(--color-task);
+  font-size: 3em;
   padding: 0 5%;
-  text-shadow: 2px 2px 22px rgba(0, 0, 0, 0.5);
 }
 
 .listTask {
   display: flex;
-  width: 34vw;
-  height: 7vh;
-  background: #222d28;
+  justify-content: space-around;
+  min-width: 425px;
+  width: 32vw;
+  height: 66px;
+  background: var(--color-button);
   align-items: center;
-  margin-top: 3vh;
+  margin-top: 19px;
   border-radius: 4px;
   transition: 1s;
   cursor: pointer;
@@ -227,12 +225,8 @@ button {
 }
 
 .listTask h2 {
-  color: #e2d1bd;
-  display: flex;
-  width: 35%;
-  font-size: 2vw;
-  padding: 8px 5%;
-  justify-content: center;
+  color: var(--color-background);
+  font-size: 1.8em;
 }
 
 .listTask:hover {
@@ -251,7 +245,7 @@ button {
 
 .third .cont-text {
   overflow: hidden;
-  background-color: #222d28;
+  background-color: var(--color-task);
   padding: 2vh 3vw;
   width: 42vw;
   min-width: 382px;
@@ -275,7 +269,7 @@ button {
 }
 
 .third .cont-text p {
-  color: #f9ead8;
+  color: var(--color-background);
   font-size: 35px;
   width: 30%;
   margin-right: 3%;
@@ -459,7 +453,7 @@ button {
 
 .digital-clock {
   position: relative;
-  font-size: 2em;
+  font-size: 1.5em;
   padding: 5px 15px;
   overflow: hidden;
   margin-top: 10px;
@@ -556,10 +550,11 @@ footer {
 }
 
 .content {
+  color: var(--color-text);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  height: 134px;
+  height: 110px;
   justify-content: space-between;
   background-color: var(--color-background);
   width: 78vw;
@@ -581,7 +576,7 @@ footer h4 {
 
 .cont-links svg {
   margin-right: 36px;
-  font-size: 3em;
+  font-size: 2em;
 }
 
 .content p {
@@ -622,6 +617,7 @@ footer img {
   flex-wrap: wrap;
   justify-content: space-around;
   font-size: 20px;
+  margin: 25px 0;
 }
 
 .container {
@@ -630,9 +626,8 @@ footer img {
 }
 
 .calendar {
-  width: 47vw;
+  width: 45vw;
   min-width: 496px;
-  padding: 20px;
 }
 
 .select-day-taks {
@@ -651,8 +646,8 @@ footer img {
 
 .select-day-taks,
 .calendar {
-  margin: 30px 0;
-  height: 737px;
+  margin: 22px 0;
+  height: 565px;
   min-width: 467px;
 }
 
@@ -660,14 +655,13 @@ footer img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 33px;
-  background-color: #44424014;
-  border-radius: 10px;
+  padding: 8px 25px;
+  background-color: #44424047;
 }
 
 .task-cont-header h1 {
   font-weight: 500;
-  font-size: 2.4em;
+  font-size: 2em;
 }
 
 .top-bar-calendario {
@@ -675,7 +669,7 @@ footer img {
   position: relative;
   justify-content: space-around;
   align-items: center;
-  height: 111px;
+  height: 80px;
 }
 
 .container .digital-clock {
@@ -703,6 +697,7 @@ footer img {
   width: 118px;
   text-align: center;
   transition: 0.5s;
+  font-size: 1.8em;
 }
 
 .router h1.hover {
@@ -727,9 +722,9 @@ footer img {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 57px;
-  height: 44px;
-  font-size: 1.9em;
+  width: 47px;
+  height: 39px;
+  font-size: 1.6em;
 }
 
 .user-setting.hover button {
@@ -786,14 +781,14 @@ footer img {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin: 15px 0;
+  margin: 10px 0;
   opacity: 0;
   transform: translateY(-20px);
   animation: fadeInDown 1s forwards;
 }
 
 .date h2 {
-  font-size: 2.6em;
+  font-size: 2em;
   font-weight: 500;
 }
 
@@ -808,11 +803,10 @@ footer img {
 }
 
 .icons-calendar button {
-  font-size: 2em;
+  font-size: 1.7em;
   margin-left: 18px;
-  width: 84px;
-  height: 40px;
-  color: #e2d1bd;
+  width: 72px;
+  height: 37px;
 }
 
 .days-of-week {
@@ -838,7 +832,7 @@ footer img {
 .days {
   overflow: hidden;
   display: grid;
-  height: 448px;
+  height: 386px;
   gap: 0.6% 0.6%;
   grid-template-columns: repeat(7, 13.7%);
   grid-template-rows: repeat(6, 16%);
@@ -861,7 +855,7 @@ footer img {
 }
 
 .containers h1 {
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: 400;
 }
 
@@ -879,8 +873,8 @@ footer img {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  height: 603px;
-  margin: 21px 45px;
+  height: 443px;
+  margin: 15px 25px;
 }
 
 .tasks::-webkit-scrollbar {
@@ -912,7 +906,7 @@ footer img {
   align-items: center;
   margin: 1%;
   overflow: visible;
-  min-height: 77px;
+  min-height: 75px;
   border-bottom: 3px solid #51504f47;
   opacity: 0;
   transform: translateY(-20px);
@@ -934,9 +928,9 @@ footer img {
 }
 
 .welcome-text h2 {
-  width: 244px;
-  height: 54px;
-  font-size: 1.7em;
+  width: 214px;
+  height: 44px;
+  font-size: 1.5em;
   text-align: center;
   cursor: pointer;
   font-weight: 300;
@@ -950,8 +944,8 @@ footer img {
 }
 
 .welcome-text img {
-  width: 347px;
-  height: 355px;
+  width: 280px;
+  height: 270px;
 }
 
 .lines,
@@ -961,7 +955,7 @@ footer img {
   display: flex;
   position: absolute;
   width: 700px;
-  bottom: 70px;
+  bottom: 11px;
   white-space: nowrap;
 }
 
@@ -1026,7 +1020,7 @@ footer img {
 }
 
 .cont-tasks h2 {
-  padding: 0 4px;
+  margin: 0 11px;
   width: 89%;
   font-size: 1.8em;
   font-weight: 400;
@@ -1052,15 +1046,9 @@ footer img {
 }
 
 .icons-add-rutine button {
-  width: 77px;
-  height: 46px;
-  border: none;
-  border-bottom: 0.2vh solid #7a7676;
-  border-right: 0.1vw solid #7a7676;
+  width: 55px;
+  height: 39px;
   border-radius: 2px;
-  background: var(--color-button);
-  color: var(--color-background);
-  transition: 1s;
 }
 
 .containers:hover .icons-add-rutine button {
@@ -1098,9 +1086,6 @@ footer img {
 .delete {
   display: flex;
   font-size: 1.3em;
-  color: #222d28f3;
-  background: rgb(217 219 218 / 44%);
-  border: none;
   width: 46px;
   height: 38px;
   border-radius: 5px;
@@ -1131,17 +1116,18 @@ footer img {
 }
 
 .create-task {
-  height: 319px;
+  height: 160px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
+  margin-top: 60px;
 }
 
 .create-task input {
   width: 283px;
   height: 46px;
-  font-size: 1.5em;
+  font-size: 1.2em;
   padding: 0 2%;
   background-color: #a8a19e;
   border: none;
@@ -1186,7 +1172,10 @@ footer img {
 .user-setting button,
 .logout button,
 .welcome-text button,
-.create-task .add {
+.create-task .add,
+.first-texto button,
+.icons-add-rutine button,
+.delete {
   color: var(--color-background);
   background-color: var(--color-button);
   border: none;
@@ -1216,7 +1205,7 @@ footer img {
 .icons-calendar button:hover,
 .welcome-text h2:hover,
 .create-task .add:hover {
-  background: rgba(59, 175, 123, 0.176);
+  background: var();
   color: #222d28f3;
   border-bottom: 1px solid rgb(25 38 32 / 22%);
   border-right: 1px solid rgb(25 38 32 / 22%);
@@ -1979,6 +1968,21 @@ footer img {
   .digital-clock {
     display: none;
   }
+  .user-setting h1 {
+    display: none;
+  }
+  .first-texto .cont-img {
+    display: none;
+  }
+
+  .user-setting {
+    width: auto;
+  }
+
+  .router {
+    font-size: 15px;
+  }
+
   .hours {
     display: flex;
     flex-direction: column;
@@ -1986,5 +1990,12 @@ footer img {
   }
   .img-login {
     display: none;
+  }
+  .content {
+    font-size: 10px;
+  }
+
+  .date {
+    font-size: 12px;
   }
 }
