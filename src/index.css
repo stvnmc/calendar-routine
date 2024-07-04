@@ -164,14 +164,13 @@ button {
 .first-texto > h1 {
   color: var(--color-text);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 50px;
+  font-size: 2.2em;
   padding: 0 5%;
 }
 
 .first-texto button {
-  height: 70px;
-  min-width: 200px;
-  width: 16vw;
+  height: 64px;
+  width: 161px;
   margin: 7vh 0px 0px;
   font-size: 30px;
   padding: 0 5%;
@@ -203,7 +202,7 @@ button {
 .contSecond h1 {
   color: var(--color-text);
   border-bottom: 5px solid var(--color-task);
-  font-size: 3em;
+  font-size: 2em;
   padding: 0 5%;
 }
 
@@ -226,7 +225,7 @@ button {
 
 .listTask h2 {
   color: var(--color-background);
-  font-size: 1.8em;
+  font-size: 1.2em;
 }
 
 .listTask:hover {
@@ -305,12 +304,11 @@ button {
 .main-container {
   font-size: 20px;
   position: relative;
-  min-width: 400px;
-  max-width: 500px;
+  min-width: 363px;
   color: var(--color-text);
   background: var(--color-background);
-  width: 24vw;
-  height: 60vh;
+  width: 20vw;
+  height: 480px;
   display: flex;
   flex-direction: column;
   padding: 3rem 2rem;
@@ -322,7 +320,7 @@ button {
 
 .main-container p {
   margin-left: 30px;
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 .main-container p span {
   cursor: pointer;
@@ -337,7 +335,7 @@ button {
 
 .main-container .cont {
   position: relative;
-  margin: 22px 0;
+  margin: 22px 13px;
 }
 
 .main-container label {
@@ -379,7 +377,7 @@ button {
   background-color: transparent;
   border: solid var(--color-text);
   color: var(--color-text);
-  margin: 30px 0 40px;
+  margin: 30px 20px 40px;
   font-size: 19px;
 }
 
@@ -399,11 +397,11 @@ button {
 
 .title {
   text-align: center;
-  margin: 11px;
+  margin: 11px 40px;
 }
 
 .title h1 {
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 400;
 }
 
@@ -580,7 +578,7 @@ footer h4 {
 }
 
 .content p {
-  font-size: 2.5em;
+  font-size: 1em;
 }
 
 footer .cont-img {
@@ -601,7 +599,7 @@ footer img {
 }
 
 .inspired h1 {
-  font-size: 2.5em;
+  font-size: 2em;
   font-weight: 400;
 }
 
@@ -626,13 +624,13 @@ footer img {
 }
 
 .calendar {
-  width: 45vw;
+  width: 41vw;
   min-width: 496px;
 }
 
 .select-day-taks {
   position: relative;
-  width: 34vw;
+  width: 32vw;
   background: var(--color-task);
   border-radius: 5px;
   border: none;
@@ -656,7 +654,7 @@ footer img {
   align-items: center;
   justify-content: space-between;
   padding: 8px 25px;
-  background-color: #44424047;
+  background-color: #44424014;
 }
 
 .task-cont-header h1 {
@@ -745,8 +743,8 @@ footer img {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 8px 4px;
-  width: 202px;
+  padding: 5px;
+  width: 171px;
   background: var(--color-background);
   border-radius: 5px;
   border: none;
@@ -758,7 +756,7 @@ footer img {
 }
 
 .setting h2 {
-  font-size: 1.8em;
+  font-size: 1.5em;
   height: 41px;
   padding-left: 10px;
   padding-top: 5px;
@@ -832,7 +830,7 @@ footer img {
 .days {
   overflow: hidden;
   display: grid;
-  height: 386px;
+  height: 350px;
   gap: 0.6% 0.6%;
   grid-template-columns: repeat(7, 13.7%);
   grid-template-rows: repeat(6, 16%);
@@ -906,7 +904,7 @@ footer img {
   align-items: center;
   margin: 1%;
   overflow: visible;
-  min-height: 75px;
+  min-height: 70px;
   border-bottom: 3px solid #51504f47;
   opacity: 0;
   transform: translateY(-20px);
@@ -1022,9 +1020,9 @@ footer img {
 .cont-tasks h2 {
   margin: 0 11px;
   width: 89%;
-  font-size: 1.8em;
+  font-size: 1.4em;
   font-weight: 400;
-  height: 50px;
+  height: 36px;
   overflow-y: auto;
 }
 

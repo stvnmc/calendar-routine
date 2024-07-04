@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const Grid = () => {
   const initialColors = Array.from({ length: 10 }, (_, index) => {
-    return index % 2 === 0 ? "rgb(211 183 181 / 50%)" : "rgb(123 108 92 / 44%)";
+    return index % 2 === 0 ? "rgb(211 183 181 / 70%)" : "rgb(123 108 92 / 70%)";
   });
 
   const [colors, setColors] = useState(initialColors);
@@ -19,9 +19,9 @@ const Grid = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       const newColors = colors.map((color) => {
-        return color === "rgb(211 183 181 / 50%)"
-          ? "rgb(123 108 92 / 44%)"
-          : "rgb(211 183 181 / 50%)";
+        return color === "rgb(211 183 181 / 70%)"
+          ? "rgb(123 108 92 / 70%)"
+          : "rgb(211 183 181 / 70%)";
       });
       setColors(newColors);
     }, 4000);
@@ -43,7 +43,7 @@ const Grid = () => {
             <h1
               style={{
                 color:
-                  color === "rgb(211 183 181 / 50%)" ? "#9e716a" : "#222d28",
+                  color === "rgb(211 183 181 / 70%)" ? "#9e716a" : "#222d28",
               }}
             >
               {matchingTask ? matchingTask.id : index + 1}
@@ -51,7 +51,7 @@ const Grid = () => {
             <p
               style={{
                 opacity: matchingTask
-                  ? color === "rgb(123 108 92 / 44%)"
+                  ? color === "rgb(123 108 92 / 70%)"
                     ? 1
                     : 0
                   : 0,
