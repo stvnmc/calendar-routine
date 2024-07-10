@@ -15,6 +15,7 @@ import Routine from "../components/Routine";
 import { SlArrowUp, SlArrowDown } from "react-icons/sl";
 import { useMonthData } from "../context/MonthDataContext";
 import { DaysMiniCalendar } from "../components/components/DaysMiniCalendar";
+import Footer from "../components/infor/Footer";
 
 const Day = () => {
   const { id1, id2, id3 } = useParams();
@@ -214,85 +215,88 @@ const Day = () => {
   };
 
   return (
-    <div className="cont-main-day">
-      <div className="cont-day-left">
-        <div className="cont-day-top-left">
-          <div className="title-left">
-            <h1>{monthsNames[id1]}</h1>
-          </div>
-          <div className="small-calendar">
-            <div className="cont-days-mini">
-              <div className="days-of-week-mini">
-                {dayNames.map((dayName, index) => (
-                  <h1 key={index}>{dayName.substring(0, 1)}</h1>
-                ))}
-              </div>
-              <div className="days-mini">
-                {infoCalendar.map((day, index) => {
-                  return (
-                    <DaysMiniCalendar
-                      key={index}
-                      item={day}
-                      month={id1}
-                      type={day.type}
-                      day={id2}
-                      year={id3}
-                      goDay={goDay}
-                    />
-                  );
-                })}
-              </div>
+    <>
+      <div className="cont-main-day">
+        <div className="cont-day-left">
+          <div className="cont-day-top-left">
+            <div className="title-left">
+              <h1>{monthsNames[id1]}</h1>
             </div>
-            <div className="top-day-icons">
-              <button onClick={() => chanceDay(-1)}>
-                <SlArrowUp />
-              </button>
-              <button onClick={() => chanceDay(1)}>
-                <SlArrowDown />
-              </button>
-            </div>
-          </div>
-        </div>
-        {stages && (
-          <div className="title-routine">
-            <div>
-              <button onClick={openCreateRutine}>
-                <h2>Create Routine</h2>
-              </button>
-              {dayExists && (
-                <button
-                  onClick={finallyDay}
-                  className={`${dayExists ? "visible" : "on-visible"}`}
-                >
-                  <h2>finallyDay</h2>
+            <div className="small-calendar">
+              <div className="cont-days-mini">
+                <div className="days-of-week-mini">
+                  {dayNames.map((dayName, index) => (
+                    <h1 key={index}>{dayName.substring(0, 1)}</h1>
+                  ))}
+                </div>
+                <div className="days-mini">
+                  {infoCalendar.map((day, index) => {
+                    return (
+                      <DaysMiniCalendar
+                        key={index}
+                        item={day}
+                        month={id1}
+                        type={day.type}
+                        day={id2}
+                        year={id3}
+                        goDay={goDay}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="top-day-icons">
+                <button onClick={() => chanceDay(-1)}>
+                  <SlArrowUp />
                 </button>
-              )}
-            </div>
-
-            <div className="title-top">
-              <h1>{percentag}%</h1>
-              <h1>{stages}</h1>
+                <button onClick={() => chanceDay(1)}>
+                  <SlArrowDown />
+                </button>
+              </div>
             </div>
           </div>
-        )}
+          {stages && (
+            <div className="title-routine">
+              <div>
+                <button onClick={openCreateRutine}>
+                  <h2>Create Routine</h2>
+                </button>
+                {dayExists && (
+                  <button
+                    onClick={finallyDay}
+                    className={`${dayExists ? "visible" : "on-visible"}`}
+                  >
+                    <h2>finallyDay</h2>
+                  </button>
+                )}
+              </div>
+
+              <div className="title-top">
+                <h1>{percentag}%</h1>
+                <h1>{stages}</h1>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="hours">
+          {dayHours().map((hourObj, index) => (
+            <Routine
+              key={index}
+              hour={hourObj.hour}
+              period={hourObj.period}
+              style={hourObj.style}
+              routine={
+                routineDay === 0 ? routineDay[24] : routineDay[hourObj.hour]
+              }
+              setNewRoutineDay={setNewRoutineDay}
+              dayExists={dayExists}
+              loading={loading}
+            />
+          ))}
+        </div>
       </div>
-      <div className="hours">
-        {dayHours().map((hourObj, index) => (
-          <Routine
-            key={index}
-            hour={hourObj.hour}
-            period={hourObj.period}
-            style={hourObj.style}
-            routine={
-              routineDay === 0 ? routineDay[24] : routineDay[hourObj.hour]
-            }
-            setNewRoutineDay={setNewRoutineDay}
-            dayExists={dayExists}
-            loading={loading}
-          />
-        ))}
-      </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
