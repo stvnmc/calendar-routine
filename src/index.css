@@ -245,16 +245,13 @@ button {
 .third .cont-text {
   overflow: hidden;
   background-color: var(--color-task);
-  padding: 2vh 3vw;
   width: 42vw;
   min-width: 382px;
-
   box-shadow: 0px 14px 26px -14px rgba(0, 0, 0, 0.75);
   border: none;
   border-radius: 5px;
   border-bottom: 0.3vh solid #d5caca;
   border-right: 0.2vw solid #d5caca;
-  margin-bottom: 9vh;
 }
 
 .third .cont-text div {
@@ -545,6 +542,7 @@ button {
 footer {
   display: flex;
   align-items: flex-end;
+  margin-top: 100px;
 }
 
 .content {
@@ -615,7 +613,7 @@ footer img {
   flex-wrap: wrap;
   justify-content: space-around;
   font-size: 20px;
-  margin: 25px 0;
+  margin-top: 58px;
 }
 
 .container {
@@ -624,13 +622,15 @@ footer img {
 }
 
 .calendar {
-  width: 41vw;
+  width: 32vw;
   min-width: 496px;
+  margin-bottom: 45px;
 }
 
 .select-day-taks {
   position: relative;
-  width: 32vw;
+  width: 35vw;
+  min-width: 432px;
   background: var(--color-task);
   border-radius: 5px;
   border: none;
@@ -642,19 +642,12 @@ footer img {
   animation: fadeInDown 1s forwards;
 }
 
-.select-day-taks,
-.calendar {
-  margin: 22px 0;
-  height: 565px;
-  min-width: 467px;
-}
-
 .task-cont-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 25px;
-  background-color: #44424014;
+  padding: 15px 25px;
+  background-color: #44424030;
 }
 
 .task-cont-header h1 {
@@ -801,10 +794,10 @@ footer img {
 }
 
 .icons-calendar button {
-  font-size: 1.7em;
+  font-size: 1.5em;
   margin-left: 18px;
-  width: 72px;
-  height: 37px;
+  width: 65px;
+  height: 31px;
 }
 
 .days-of-week {
@@ -823,7 +816,7 @@ footer img {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: 1.4em;
+  font-size: 1em;
   font-weight: 400;
 }
 
@@ -871,7 +864,7 @@ footer img {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  height: 443px;
+  height: 455px;
   margin: 15px 25px;
 }
 
@@ -942,8 +935,8 @@ footer img {
 }
 
 .welcome-text img {
-  width: 280px;
-  height: 270px;
+  width: 239px;
+  height: 224px;
 }
 
 .lines,
@@ -1614,7 +1607,7 @@ footer img {
 
 .steps-to-follow {
   width: 30%;
-  min-width: 525px;
+  min-width: 442px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1636,7 +1629,7 @@ footer img {
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  width: 65vw;
+  width: 50vw;
   height: 85vh;
   margin: 16px 2px;
   min-height: 809px;
@@ -1995,5 +1988,8 @@ footer img {
 
   .date {
     font-size: 12px;
+  }
+  .second {
+    height: 483px;
   }
 }
