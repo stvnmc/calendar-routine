@@ -123,6 +123,11 @@ const NavBarMonth = () => {
     setLoadingRegister(value);
   };
 
+  const chanceLoadingRegister = () => {
+    document.body.style.overflowY = "overlay";
+    setOpenLoadingRegister(false);
+  };
+
   const chanceDarkModo = () => {
     if (darkMode === "light-mode") setDarkMode("dark-mode");
     if (darkMode === "dark-mode") setDarkMode("light-mode");
@@ -175,7 +180,7 @@ const NavBarMonth = () => {
         loadingRegister ? (
           <Login
             setLoadingRegister={setLoadingRegister}
-            setOpenLoadingRegister={setOpenLoadingRegister}
+            chanceLoadingRegister={chanceLoadingRegister}
             divLoginRegisterRef={divLoginRegisterRef}
           >
             {Children}
@@ -183,7 +188,7 @@ const NavBarMonth = () => {
         ) : (
           <Register
             setLoadingRegister={setLoadingRegister}
-            setOpenLoadingRegister={setOpenLoadingRegister}
+            chanceLoadingRegister={chanceLoadingRegister}
             divLoginRegisterRef={divLoginRegisterRef}
             year={year}
             month={month}

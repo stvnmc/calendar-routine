@@ -100,19 +100,19 @@ button {
 }
 
 .grid {
-  width: 43vw;
+  width: 41vw;
+  height: 406px;
   margin-left: 1vw;
   margin-bottom: 48px;
-  min-width: 467px;
+  min-width: 572px;
   display: grid;
   grid-template-columns: repeat(5, 20%);
   grid-template-rows: repeat(1, 50%);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 7px 9px 15px -4px rgba(0, 0, 0, 0.75);
   border: none;
-  border-bottom: 0.4vh solid #c0bcbca1;
-  border-right: 0.4vh solid #c0bcbca1;
+  border-bottom: 5px solid #c0bcbca1;
+  border-right: 5px solid #c0bcbca1;
 }
 
 .square {
@@ -150,10 +150,10 @@ button {
 
 .first-texto .cont-img {
   position: absolute;
-  width: 233px;
-  min-width: 294px;
-  top: 110px;
-  right: -98px;
+  width: 227px;
+  min-width: 292px;
+  top: 104px;
+  right: -37px;
 }
 
 .first-texto .cont-img img {
@@ -170,7 +170,7 @@ button {
 
 .first-texto button {
   height: 64px;
-  width: 161px;
+  width: 184px;
   margin: 7vh 0px 0px;
   font-size: 30px;
   padding: 0 5%;
@@ -279,7 +279,7 @@ button {
 }
 
 .third img {
-  width: 30vw;
+  width: 27vw;
   min-width: 292px;
   margin-right: 4vw;
 }
@@ -582,7 +582,7 @@ footer h4 {
 footer .cont-img {
   background-color: var(--color-background);
   border-radius: 0 10vw 0 0;
-  width: 20vw;
+  width: 18vw;
   min-width: 200px;
   display: flex;
   align-items: center;
@@ -613,7 +613,7 @@ footer img {
   flex-wrap: wrap;
   justify-content: space-around;
   font-size: 20px;
-  margin-top: 58px;
+  margin-top: 85px;
 }
 
 .container {
@@ -623,13 +623,14 @@ footer img {
 
 .calendar {
   width: 32vw;
-  min-width: 496px;
+  min-width: 443px;
   margin-bottom: 45px;
 }
 
 .select-day-taks {
   position: relative;
   width: 35vw;
+  height: 711px;
   min-width: 432px;
   background: var(--color-task);
   border-radius: 5px;
@@ -660,7 +661,7 @@ footer img {
   position: relative;
   justify-content: space-around;
   align-items: center;
-  height: 80px;
+  height: 120px;
 }
 
 .container .digital-clock {
@@ -794,10 +795,10 @@ footer img {
 }
 
 .icons-calendar button {
-  font-size: 1.5em;
+  font-size: 1.7em;
   margin-left: 18px;
-  width: 65px;
-  height: 31px;
+  width: 70px;
+  height: 35px;
 }
 
 .days-of-week {
@@ -864,7 +865,7 @@ footer img {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  height: 455px;
+  height: 599px;
   margin: 15px 25px;
 }
 
@@ -919,9 +920,12 @@ footer img {
 }
 
 .welcome-text h2 {
-  width: 214px;
-  height: 44px;
-  font-size: 1.5em;
+  width: 236px;
+  height: 63px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7em;
   text-align: center;
   cursor: pointer;
   font-weight: 300;
@@ -935,8 +939,8 @@ footer img {
 }
 
 .welcome-text img {
-  width: 239px;
-  height: 224px;
+  width: 341px;
+  height: 350px;
 }
 
 .lines,
@@ -1166,7 +1170,8 @@ footer img {
 .create-task .add,
 .first-texto button,
 .icons-add-rutine button,
-.delete {
+.delete,
+.input-create-routine button {
   color: var(--color-background);
   background-color: var(--color-button);
   border: none;
@@ -1244,7 +1249,7 @@ footer img {
 
 .hours {
   width: 65vw;
-  height: 604px;
+  height: 739px;
   min-width: 572px;
   display: grid;
   grid-template-columns: repeat(4, 24.3%);
@@ -1482,7 +1487,7 @@ footer img {
   justify-content: space-evenly;
   align-items: flex-start;
   flex-direction: column;
-  height: 300px;
+  height: 425px;
   opacity: 0;
   transform: translateY(-20px);
   animation: fadeInDown 1s forwards;
@@ -1557,6 +1562,7 @@ footer img {
   font-size: 1.7em;
   font-weight: 400;
   width: 90%;
+  color: var(--color-text);
 }
 
 .task-routine h2::-webkit-scrollbar {
@@ -1578,8 +1584,9 @@ footer img {
 
 .task-routine button {
   width: 40px;
-  height: 39px;
+  height: 35px;
   margin-left: 9px;
+  margin-top: 9px;
 }
 
 .task-routine button svg {
@@ -1601,6 +1608,7 @@ footer img {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 42px;
 }
 
 .steps-to-follow {
@@ -1611,8 +1619,9 @@ footer img {
   align-items: center;
   margin: 0 40px;
 }
+
 .steps-info {
-  height: 489px;
+  height: 541px;
 }
 
 .days-off {
@@ -1758,6 +1767,8 @@ footer img {
   overflow-wrap: break-word;
   margin-top: 4px;
   border: none;
+  font-weight: 300;
+  color: var(--color-text);
 }
 
 .input-create-text::-webkit-scrollbar {
@@ -1784,6 +1795,7 @@ footer img {
 }
 
 .title-create h1 {
+  color: var(--color-text);
   font-size: 2em;
   font-weight: 400;
 }
@@ -1792,14 +1804,14 @@ footer img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .input-create-routine input {
-  height: 33px;
+  height: 30px;
   background-color: #e0dcdc;
   color: #1b1b1a;
-  width: 60%;
+  width: 58%;
   font-size: 1.5em;
   padding: 0 2%;
   border: none;
@@ -1816,14 +1828,8 @@ footer img {
 }
 
 .input-create-routine button {
-  background: rgb(94 92 89);
-  color: #f5faf8f3;
-  border: none;
   width: 38%;
   height: 3vh;
-  border-radius: 2px;
-  border-bottom: 2px solid rgb(198 200 199);
-  border-right: 2px solid rgb(198 200 199);
 }
 
 .create-input.true {
@@ -1862,7 +1868,7 @@ footer img {
   color: #222d28f3;
 }
 .steps {
-  margin-top: 6px;
+  margin-top: 44px;
   display: flex;
   align-items: center;
   width: 207px;
@@ -1883,7 +1889,7 @@ footer img {
 }
 
 .steps-info img {
-  width: 365px;
+  width: 413px;
   transition: 1s;
 }
 

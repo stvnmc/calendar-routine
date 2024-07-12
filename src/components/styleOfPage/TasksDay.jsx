@@ -19,11 +19,11 @@ const TasksDay = ({
   const [createTask, setCreateTask] = useState(false);
   const [loading, setLoading] = useState(true);
   const [loadingTasks, setLoadingTasks] = useState(true);
-  const [arrayTasks, setArrayTasks] = useState([0, 1, 2, 3, 4, 5]);
+  const [arrayTasks, setArrayTasks] = useState([0, 1, 2, 3, 4, 5, 6]);
 
   useEffect(() => {
     if (infoOfMonth[infoDay]) {
-      const targetLength = Math.max(infoOfMonth[infoDay].length, 5);
+      const targetLength = Math.max(infoOfMonth[infoDay].length, 6);
       setArrayTasks((prevArrayTasks) => {
         if (targetLength > prevArrayTasks.length) {
           return [

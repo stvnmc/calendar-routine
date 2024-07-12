@@ -6,7 +6,7 @@ import { useMonthData } from "../context/MonthDataContext";
 const Register = ({
   setLoadingRegister,
   divLoginRegisterRef,
-  setOpenLoadingRegister,
+  chanceLoadingRegister,
   year,
   month,
 }) => {
@@ -31,7 +31,7 @@ const Register = ({
         addCollectionNewUser(infoUser[0].name, year, info);
       }
     }, 100);
-    setOpenLoadingRegister(false);
+    chanceLoadingRegister();
   };
 
   const handleClick = (type) => {
@@ -99,7 +99,7 @@ const Register = ({
           You have an account?
           <span onClick={() => setLoadingRegister(true)}>Login</span>
         </p>
-        <div className="go-back" onClick={() => setOpenLoadingRegister(false)}>
+        <div className="go-back" onClick={() => chanceLoadingRegister()}>
           <FaArrowLeft />
         </div>
       </div>

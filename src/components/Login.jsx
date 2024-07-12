@@ -5,7 +5,7 @@ import { FaArrowLeft } from "react-icons/fa";
 const Login = ({
   setLoadingRegister,
   divLoginRegisterRef,
-  setOpenLoadingRegister,
+  chanceLoadingRegister,
 }) => {
   const { signin, errors } = useUser();
   const [showTextEmail, setShowTextEmail] = useState(false);
@@ -14,7 +14,7 @@ const Login = ({
   const login = async (e) => {
     e.preventDefault();
     const res = await signin(e.target.email.value, e.target.password.value);
-    if (res) setOpenLoadingRegister(false);
+    if (res) chanceLoadingRegister();
   };
 
   const handleClick = (type) => {
@@ -83,7 +83,7 @@ const Login = ({
           <span onClick={() => setLoadingRegister(false)}>Sign Up</span>
         </p>
 
-        <div className="go-back" onClick={() => setOpenLoadingRegister(false)}>
+        <div className="go-back" onClick={() => chanceLoadingRegister()}>
           <FaArrowLeft />
         </div>
       </div>
