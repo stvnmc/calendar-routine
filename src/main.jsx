@@ -5,12 +5,15 @@ import "./index.css";
 import { MonthDataProvider } from "./context/MonthDataContext.jsx";
 import { UserProvider } from "./context/userContext.jsx";
 import { RoutineProvider } from "./context/RoutineContext.jsx";
+import { NotesProvider } from "./context/NotesContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <UserProvider>
     <MonthDataProvider>
       <RoutineProvider>
-        <App />
+        <NotesProvider>
+          <App />
+        </NotesProvider>
       </RoutineProvider>
     </MonthDataProvider>
   </UserProvider>

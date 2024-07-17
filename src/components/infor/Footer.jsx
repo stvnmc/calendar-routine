@@ -23,10 +23,10 @@ const Footer = () => {
         </div>
 
         <div className="cont-links">
-          <a href="https://www.instagram.com/cuatrommc/?hl=es">
+          <a href="https://github.com/stvnmc">
             <FaGithub />
           </a>
-          <a href="https://github.com/stvnmc">
+          <a href="https://www.instagram.com/cuatrommc/?hl=es">
             <FaInstagram />
           </a>
         </div>

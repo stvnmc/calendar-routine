@@ -10,6 +10,7 @@ import { useUser } from "../context/userContext";
 import { getInfoCalendar } from "../components/FunctionGetCalendar";
 import Footer from "../components/infor/Footer";
 import TasksDay from "../components/styleOfPage/TasksDay";
+import Notes from "../components/components/Notes";
 
 const Month = () => {
   const { id1, id2 } = useParams();
@@ -119,6 +120,7 @@ const Month = () => {
               />
             ))}
           </div>
+          <Notes />
         </div>
 
         <TasksDay
