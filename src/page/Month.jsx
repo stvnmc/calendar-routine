@@ -18,6 +18,7 @@ const Month = () => {
   const navigate = useNavigate();
   const [infoCalendar, setInfoCalendar] = useState([]);
   const [daySelect, setDaySelect] = useState(1);
+  const [openIdeas, setOpenIdeas] = useState(false);
 
   const {
     loadingMonth,
@@ -86,7 +87,7 @@ const Month = () => {
     <div className="container">
       <div className="main-container-month">
         <div className="calendar">
-          <div className="date">
+          <div className={`date ${openIdeas ? "close" : ""}`}>
             <h2>
               {monthsNames[id1 - 1]} {id2}
             </h2>
@@ -99,12 +100,12 @@ const Month = () => {
               </button>
             </div>
           </div>
-          <div className="days-of-week">
+          <div className={`days-of-week ${openIdeas ? "close" : ""}`}>
             {dayNames.map((dayName, index) => (
               <h2 key={index}>{dayName}</h2>
             ))}
           </div>
-          <div className="days">
+          <div className={`days ${openIdeas ? "close" : ""}`}>
             {infoCalendar?.map(({ dayNumber, dayOfWeek, type }, index) => (
               <DayContainer
                 key={index}
@@ -120,7 +121,7 @@ const Month = () => {
               />
             ))}
           </div>
-          <Notes />
+          <Notes setOpenIdeas={setOpenIdeas} openIdeas={openIdeas} />
         </div>
 
         <TasksDay

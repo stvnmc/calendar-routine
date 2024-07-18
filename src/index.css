@@ -768,6 +768,8 @@ footer img {
 }
 
 .date {
+  width: 32vw;
+  min-width: 443px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -775,9 +777,19 @@ footer img {
   opacity: 0;
   transform: translateY(-20px);
   animation: fadeInDown 1s forwards;
+  transition: 0.5s;
+}
+
+.date.close {
+  width: 26vw;
+  min-width: 350px;
+}
+.date.close h2 {
+  font-size: 1.5em;
 }
 
 .date h2 {
+  transition: 0.5s;
   font-size: 2em;
   font-weight: 500;
 }
@@ -800,6 +812,8 @@ footer img {
 }
 
 .days-of-week {
+  width: 32vw;
+  min-width: 443px;
   display: grid;
   grid-template-columns: repeat(7, 14%);
   height: 64px;
@@ -809,6 +823,12 @@ footer img {
   opacity: 0;
   transform: translateY(-20px);
   animation: fadeInDown 1.4s forwards;
+  transition: 0.5s;
+}
+
+.days-of-week.close {
+  min-width: 350px;
+  width: 26vw;
 }
 
 .days-of-week h2 {
@@ -820,15 +840,29 @@ footer img {
 }
 
 .days {
+  width: 32vw;
+  min-width: 443px;
   overflow: hidden;
   display: grid;
-  height: 350px;
+
+  height: 396px;
   gap: 0.6% 0.6%;
   grid-template-columns: repeat(7, 13.7%);
   grid-template-rows: repeat(6, 16%);
   opacity: 0;
   transform: translateY(-20px);
   animation: fadeInDown 1.7s forwards;
+  transition: 0.5s;
+}
+
+.days.close {
+  min-width: 350px;
+  width: 26vw;
+  height: 266px;
+}
+
+.days.close .icon-task-have svg {
+  font-size: 0.7em;
 }
 
 .containers {
@@ -888,6 +922,10 @@ footer img {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.icon-task-have svg {
+  transition: 0.5s;
 }
 
 .cont-tasks {
@@ -1169,7 +1207,8 @@ footer img {
 .first-texto button,
 .icons-add-rutine button,
 .delete,
-.input-create-routine button {
+.input-create-routine button,
+.ideas-top button {
   color: var(--color-background);
   background-color: var(--color-button);
   border: none;
@@ -1187,7 +1226,7 @@ footer img {
   flex-wrap: wrap;
 }
 
-.cont-day-left{
+.cont-day-left {
   height: 705px;
 }
 
@@ -1959,6 +1998,74 @@ footer img {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* /////////////////////// ideas /////////////////////// */
+
+.ideas {
+  background-color: var(--color-task);
+  border: none;
+  margin-top: 18px;
+  border-radius: 5px;
+  border-right: 0.4vh solid #706b6b;
+  border-bottom: 0.4vh solid #706b6b;
+
+  height: 50px;
+  transition: 0.5s;
+}
+
+.ideas:hover {
+  border-right: 0.4vh solid #8a8787;
+  border-bottom: 0.4vh solid #8a8787;
+}
+
+.ideas-top {
+  padding: 8px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #44424030;
+}
+
+.ideas-top h2 {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+.ideas-top button {
+  width: 53px;
+  height: 32px;
+}
+
+.ideas svg {
+  font-size: 1.5em;
+  transition: 0.5s;
+}
+
+/* chance ideas */
+
+.ideas.open {
+  height: 303px;
+}
+
+.ideas.open .ideas-top svg {
+  transform: rotate(180deg);
+}
+
+/* /////////////////////// ideas /////////////////////// */
+
+.ideas-body {
+  padding: 16px;
+  height: 217px;
+  overflow-y: auto;
+  margin-right: 11px;
+  transition: 0.5s;
+}
+
+.ideas-body p {
+  font-size: 1.8em;
+  border: none;
+  border-bottom: 3px solid #51504f47;
 }
 
 @media screen and (max-width: 900px) {
