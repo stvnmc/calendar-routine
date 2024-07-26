@@ -2032,6 +2032,12 @@ footer img {
   font-weight: 400;
 }
 
+.ideas-top .cont-button {
+  width: 115px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .ideas-top button {
   width: 53px;
   height: 32px;
@@ -2048,7 +2054,7 @@ footer img {
   height: 303px;
 }
 
-.ideas.open .ideas-top svg {
+.ideas.open .ideas-top .open svg {
   transform: rotate(180deg);
 }
 
