@@ -156,7 +156,9 @@ export const RoutineProvider = ({ children }) => {
 
       setRoutineDay(dayInfo.routineDay);
       return true;
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // create collection
@@ -179,31 +181,25 @@ export const RoutineProvider = ({ children }) => {
     try {
       const batch = writeBatch(db);
 
-      // Combine RoutineWeekend into a single object
       const weekendData = {};
       RoutineWeekend.forEach((item) => {
         weekendData[item.hour] = item;
       });
 
-      // Combine RoutineWorkday into a single object
       const workdayData = {};
       RoutineWorkday.forEach((item) => {
         workdayData[item.hour] = item;
       });
 
-      // Update weekend collection with combined data
       const docRefWeekend = doc(collectionRef, "weekend");
       batch.set(docRefWeekend, weekendData, { merge: true });
 
-      // Update workday collection with combined data
       const docRefWorkday = doc(collectionRef, "workday");
       batch.set(docRefWorkday, workdayData, { merge: true });
 
-      // Update DaysOfWeekend collection with 'weekend' data
       const docRefDaysOfWeekend = doc(collectionRef, "DaysOfWeekend");
       batch.set(docRefDaysOfWeekend, { weekend }, { merge: true });
 
-      // Commit the batched writes
       await batch.commit();
 
       return true;

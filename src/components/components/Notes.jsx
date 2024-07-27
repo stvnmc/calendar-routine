@@ -1,21 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SlArrowDown } from "react-icons/sl";
 import { IoMdAdd } from "react-icons/io";
+import { useNotes } from "../../context/NotesContext";
+import { useUser } from "../../context/userContext";
 
 const Notes = ({ openIdeas, setOpenIdeas }) => {
-  const [openCreateIdeas, setOpenCreateIdeas] = useState(false);
+  const { addIdeas, getIdeas } = useNotes();
+  const { user } = useUser();
 
-  const notes = [
-    "Dsad a ssdDsa dassdD sada ssdDsa da ssd Dsadassd Dsadass dDsadas sdDsadassd",
-    "dsadas",
-    "dsadas",
-    "dsadas",
-    "dsadas",
-    "dsadas",
-    "dsadas",
-    "dsadas",
-    "dsadas",
-  ];
+  const [openCreateIdeas, setOpenCreateIdeas] = useState(false);
+  const [notesIdeas, setNotesIdeas] = useState(null);
+  const [arrayTasks, setArrayTasks] = useState([0, 1, 2, 3]);
 
   const chanceOpenIdeas = () => {
     setOpenIdeas(!openIdeas);
@@ -28,8 +23,17 @@ const Notes = ({ openIdeas, setOpenIdeas }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target)
+    addIdeas(e.target.ideas.value);
   };
+
+  const getInfoIdeas = async () => {
+    const res = await getIdeas();
+    setNotesIdeas(res);
+  };
+
+  useEffect(() => {
+    getInfoIdeas();
+  }, [user]);
 
   return (
     <div className={`ideas ${openIdeas ? "open" : ""}`}>
@@ -48,14 +52,13 @@ const Notes = ({ openIdeas, setOpenIdeas }) => {
         openCreateIdeas ? (
           <form onSubmit={onSubmit}>
             <label>add idea</label>
-            <input type="text" placeholder="ideas" />
+            <input type="text" placeholder="ideas" id="ideas" />
             <button>add</button>
           </form>
         ) : (
           <div className="ideas-body">
-            {notes.map((item, i) => (
-              <p key={i}>{item}</p>
-            ))}
+            {notesIdeas &&
+              arrayTasks?.map((item) => <p key={item}>{notesIdeas[item]}</p>)}
           </div>
         )
       ) : (

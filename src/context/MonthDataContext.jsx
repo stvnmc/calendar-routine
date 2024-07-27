@@ -33,7 +33,7 @@ export const MonthDataProvider = ({ children }) => {
   // add collection localstore
   async function addCollectionNewUser(userState, year, info) {
     const collectionName = userState + year;
-    console.log(userState);
+
 
     try {
       const collectionRef = collection(db, collectionName);

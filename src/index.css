@@ -2069,6 +2069,7 @@ footer img {
 }
 
 .ideas-body p {
+  min-height: 45px;
   font-size: 1.8em;
   border: none;
   border-bottom: 3px solid #51504f47;
