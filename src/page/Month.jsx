@@ -18,7 +18,10 @@ const Month = () => {
   const navigate = useNavigate();
   const [infoCalendar, setInfoCalendar] = useState([]);
   const [daySelect, setDaySelect] = useState(1);
+
   const [openIdeas, setOpenIdeas] = useState(false);
+
+  //Context
 
   const {
     loadingMonth,

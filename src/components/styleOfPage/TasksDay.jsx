@@ -22,6 +22,7 @@ const TasksDay = ({
   const [arrayTasks, setArrayTasks] = useState([0, 1, 2, 3, 4, 5, 6]);
 
   useEffect(() => {
+    
     if (infoOfMonth[infoDay]) {
       const targetLength = Math.max(infoOfMonth[infoDay].length, 6);
       setArrayTasks((prevArrayTasks) => {

@@ -1,6 +1,13 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { useUser } from "./userContext";
-import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "../firebase/config";
 
 export const NotesContext = createContext();
@@ -18,7 +25,12 @@ export const useNotes = () => {
 };
 
 export const NotesProvider = ({ children }) => {
+  // Contexr
   const { user } = useUser();
+
+  const [notesIdeas, setNotesIdeas] = useState(null);
+  const [openCreateIdeas, setOpenCreateIdeas] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const getIdeas = async () => {
     if (!user || typeof user !== "string") {
@@ -32,13 +44,15 @@ export const NotesProvider = ({ children }) => {
     const docRef = doc(collection(db, collectionName), "ideas");
 
     if (!ress) {
-      await setDoc(docRef, { 0: "" });
+      await setDoc(docRef, { 0: "cuatromc" });
       return;
     }
 
     const resInfoIdeas = await getDoc(docRef);
 
-    return resInfoIdeas.data();
+    setNotesIdeas(resInfoIdeas.data());
+
+    return;
   };
 
   const addIdeas = async (value) => {
@@ -48,6 +62,22 @@ export const NotesProvider = ({ children }) => {
     const resInfoIdeas = await getDoc(docRef);
 
     const data = resInfoIdeas.data();
+
+    if (data[0] === "cuatromc") {
+      await setDoc(docRef, { 0: value });
+      return;
+    }
+
+    const newIndex = Object.keys(data).length;
+    data[newIndex] = value;
+
+    await setDoc(docRef, data);
+
+    await getIdeas();
+
+    setOpenCreateIdeas(false);
+
+    return;
   };
 
   async function collectionExists(collectionName) {
@@ -63,8 +93,41 @@ export const NotesProvider = ({ children }) => {
     }
   }
 
+  // Edit ideas
+
+  async function deletedIdea(index) {
+    const collectionName = user + "ideas";
+
+    const docRef = doc(collection(db, collectionName), "ideas");
+    const resInfoIdeas = await getDoc(docRef);
+
+    const data = resInfoIdeas.data();
+
+    const updatedIdeas = {};
+    let newIndex = 0;
+    for (let key in data) {
+      if (parseInt(key) !== index) {
+        updatedIdeas[newIndex] = data[key];
+        newIndex++;
+      }
+    }
+
+    await setDoc(docRef, updatedIdeas);
+    await getIdeas();
+  }
+
   return (
-    <NotesContext.Provider value={{ addIdeas, getIdeas }}>
+    <NotesContext.Provider
+      value={{
+        addIdeas,
+        getIdeas,
+        openCreateIdeas,
+        setOpenCreateIdeas,
+        deletedIdea,
+        notesIdeas,
+        setNotesIdeas,
+      }}
+    >
       {children}
     </NotesContext.Provider>
   );

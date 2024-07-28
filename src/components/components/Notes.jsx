@@ -5,11 +5,12 @@ import { useNotes } from "../../context/NotesContext";
 import { useUser } from "../../context/userContext";
 
 const Notes = ({ openIdeas, setOpenIdeas }) => {
-  const { addIdeas, getIdeas } = useNotes();
-  const { user } = useUser();
+  const { addIdeas, getIdeas, deletedIdea, notesIdeas } = useNotes();
 
-  const [openCreateIdeas, setOpenCreateIdeas] = useState(false);
-  const [notesIdeas, setNotesIdeas] = useState(null);
+  //Context
+  const { user } = useUser();
+  const { openCreateIdeas, setOpenCreateIdeas } = useNotes();
+
   const [arrayTasks, setArrayTasks] = useState([0, 1, 2, 3]);
 
   const chanceOpenIdeas = () => {
@@ -26,14 +27,32 @@ const Notes = ({ openIdeas, setOpenIdeas }) => {
     addIdeas(e.target.ideas.value);
   };
 
-  const getInfoIdeas = async () => {
-    const res = await getIdeas();
-    setNotesIdeas(res);
-  };
+  useEffect(() => {
+    getIdeas();
+  }, [user]);
 
   useEffect(() => {
-    getInfoIdeas();
-  }, [user]);
+    if (!notesIdeas) return;
+
+    const ideas = Object.keys(notesIdeas).length;
+
+    const targetLength = Math.max(ideas, 3);
+
+    setArrayTasks((prevArrayTasks) => {
+      if (targetLength > prevArrayTasks.length) {
+        return [
+          ...prevArrayTasks,
+          ...Array.from(
+            { length: targetLength - prevArrayTasks.length },
+            (_, i) => prevArrayTasks.length + i
+          ),
+        ];
+      } else if (targetLength < prevArrayTasks.length) {
+        return prevArrayTasks.slice(0, targetLength);
+      }
+      return prevArrayTasks;
+    });
+  }, [notesIdeas]);
 
   return (
     <div className={`ideas ${openIdeas ? "open" : ""}`}>
@@ -58,7 +77,14 @@ const Notes = ({ openIdeas, setOpenIdeas }) => {
         ) : (
           <div className="ideas-body">
             {notesIdeas &&
-              arrayTasks?.map((item) => <p key={item}>{notesIdeas[item]}</p>)}
+              arrayTasks?.map((_, i) => (
+                <div key={i}>
+                  <p>{notesIdeas[i]}</p>
+                  {notesIdeas[i] ? (
+                    <button onClick={() => deletedIdea(i)}>dele</button>
+                  ) : null}
+                </div>
+              ))}
           </div>
         )
       ) : (
