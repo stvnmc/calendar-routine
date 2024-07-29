@@ -37,6 +37,8 @@ export const NotesProvider = ({ children }) => {
       return;
     }
 
+    setLoading(false);
+
     const collectionName = user + "ideas";
 
     const ress = await collectionExists(collectionName);
@@ -52,10 +54,16 @@ export const NotesProvider = ({ children }) => {
 
     setNotesIdeas(resInfoIdeas.data());
 
+    setLoading(true);
+
     return;
   };
 
   const addIdeas = async (value) => {
+    if (value === "") return;
+
+    setLoading(false);
+
     const collectionName = user + "ideas";
 
     const docRef = doc(collection(db, collectionName), "ideas");
@@ -96,6 +104,7 @@ export const NotesProvider = ({ children }) => {
   // Edit ideas
 
   async function deletedIdea(index) {
+    setLoading(false);
     const collectionName = user + "ideas";
 
     const docRef = doc(collection(db, collectionName), "ideas");
@@ -126,6 +135,7 @@ export const NotesProvider = ({ children }) => {
         deletedIdea,
         notesIdeas,
         setNotesIdeas,
+        loading,
       }}
     >
       {children}
