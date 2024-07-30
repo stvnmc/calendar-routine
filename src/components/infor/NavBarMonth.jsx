@@ -153,12 +153,15 @@ const NavBarMonth = () => {
         </h1>
       </div>
       <div className={`user-setting ${openSetting ? "hover" : ""}`}>
-        {!openSetting && <h1>{user}</h1>}
+        <h1 className={`${!openSetting ? "show" : "hiden"}`}>{user}</h1>
         <button onClick={() => setOpenSetting(true)}>
           <IoIosSettings />
         </button>
-        {openSetting && (
-          <div className="setting" ref={divRef}>
+        {openSetting ? (
+          <div
+            className={`setting ${openSetting ? "open" : "close"}`}
+            ref={divRef}
+          >
             <div onClick={() => console.log("hla")}></div>
             <h2 onClick={chanceDarkModo}>Dark modo</h2>
             <h2>Chance Spanish</h2>
@@ -174,6 +177,8 @@ const NavBarMonth = () => {
               <h2 onClick={logout}>Logout</h2>
             )}
           </div>
+        ) : (
+          <div className={`setting ${openSetting ? "open" : "close"}`}></div>
         )}
       </div>
       {openLoadingRegister ? (

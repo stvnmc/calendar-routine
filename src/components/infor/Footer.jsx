@@ -13,16 +13,8 @@ const Footer = () => {
         />
       </div>
       <div className="content">
-        <div className="inspired">
-          <h1>
-            Images:
-            <a href={"https://www.transhumans.xyz/images/plants"}>
-              transhumans.com
-            </a>
-          </h1>
-        </div>
-
         <div className="cont-links">
+          <h2>Social Media :</h2>
           <a href="https://github.com/stvnmc">
             <FaGithub />
           </a>
@@ -30,7 +22,23 @@ const Footer = () => {
             <FaInstagram />
           </a>
         </div>
-        <p>&copy; 2024</p>
+
+        <div className="inspired">
+          <h2>
+            Images:
+            <a
+              href={"https://www.transhumans.xyz/images/plants"}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              transhumans.com
+            </a>
+          </h2>
+        </div>
+        <div>
+          <p> Create by: Steven Marchena caballero</p>
+          <p>&copy; 2024</p>
+        </div>
       </div>
     </footer>
   );

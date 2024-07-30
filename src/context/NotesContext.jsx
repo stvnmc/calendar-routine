@@ -37,6 +37,10 @@ export const NotesProvider = ({ children }) => {
       return;
     }
 
+    if (user === "welcome") {
+      console.log("es igual");
+    }
+
     setLoading(false);
 
     const collectionName = user + "ideas";

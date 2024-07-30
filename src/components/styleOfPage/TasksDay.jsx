@@ -19,12 +19,11 @@ const TasksDay = ({
   const [createTask, setCreateTask] = useState(false);
   const [loading, setLoading] = useState(true);
   const [loadingTasks, setLoadingTasks] = useState(true);
-  const [arrayTasks, setArrayTasks] = useState([0, 1, 2, 3, 4, 5, 6]);
+  const [arrayTasks, setArrayTasks] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8]);
 
   useEffect(() => {
-    
     if (infoOfMonth[infoDay]) {
-      const targetLength = Math.max(infoOfMonth[infoDay].length, 6);
+      const targetLength = Math.max(infoOfMonth[infoDay].length, 8);
       setArrayTasks((prevArrayTasks) => {
         if (targetLength > prevArrayTasks.length) {
           return [
@@ -115,17 +114,17 @@ const TasksDay = ({
                 <>
                   {arrayTasks.map((item) => (
                     <div key={item} className="cont-tasks">
-                      {infoOfMonth[infoDay]?.[item] && (
-                        <>
-                          <h2>{infoOfMonth[infoDay]?.[item]}</h2>
+                      <>
+                        <h2>{infoOfMonth[infoDay]?.[item]}</h2>
+                        {infoOfMonth[infoDay]?.[item] && (
                           <button
                             className="delete"
                             onClick={() => chanceState("delete", item)}
                           >
                             <MdBookmarkRemove />
                           </button>
-                        </>
-                      )}
+                        )}
+                      </>
                     </div>
                   ))}
                 </>

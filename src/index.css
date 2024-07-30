@@ -18,7 +18,6 @@ body.light-mode {
   --color-button-hover: #565554;
   --color-task: #ccbeaf;
   --color-day-next: #e1dbc1;
-
   --img-background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16'%3E%3Cg fill='%23382e24' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
@@ -28,6 +27,7 @@ body.dark-mode {
   --color-primary: #353333;
   --color-button: #cecbc8;
   --color-task: #a69583;
+  --color-button-hover: #948983;
   --color-day-next: #656458;
   --img-background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath fill-rule='evenodd' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/%3E%3C/g%3E%3C/svg%3E");
 }
@@ -101,9 +101,9 @@ button {
 
 .grid {
   width: 41vw;
-  height: 406px;
+  height: 390px;
   margin-bottom: 48px;
-  min-width: 469px;
+  min-width: 496px;
   display: grid;
   grid-template-columns: repeat(5, 20%);
   grid-template-rows: repeat(1, 50%);
@@ -174,13 +174,6 @@ button {
   padding: 0 5%;
   font-weight: bolder;
   transition: 0.7s;
-}
-
-.first-texto button:hover {
-  background-color: #e9d9d9e7;
-  color: #2e2b28;
-  border-bottom: 0.3vh solid #3f3e3e;
-  border-right: 0.3vh solid #3f3e3e;
 }
 
 .second {
@@ -263,7 +256,7 @@ button {
 }
 
 .third .cont-text p {
-  color: var(--color-background);
+  color: var(--color-text);
   font-size: 35px;
   width: 30%;
   margin-right: 3%;
@@ -569,8 +562,18 @@ footer h4 {
 }
 
 .cont-links svg {
-  margin-right: 36px;
+  margin: 9px;
   font-size: 2em;
+  transition: 0f;
+}
+
+.cont-links svg:hover {
+  color: var(--color-task);
+}
+
+.cont-links h2 {
+  font-size: 2em;
+  font-weight: 400;
 }
 
 .content p {
@@ -593,8 +596,11 @@ footer img {
   width: 100%;
   height: 100%;
 }
+.inspired {
+  display: flex;
+}
 
-.inspired h1 {
+.inspired h2 {
   font-size: 2em;
   font-weight: 400;
 }
@@ -609,7 +615,7 @@ footer img {
 .main-container-month {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   font-size: 20px;
   margin-top: 85px;
 }
@@ -628,6 +634,7 @@ footer img {
 .select-day-taks {
   position: relative;
   width: 35vw;
+  max-width: 587px;
   height: 711px;
   min-width: 432px;
   background: var(--color-task);
@@ -699,13 +706,24 @@ footer img {
   display: flex;
   align-items: center;
   width: 280px;
-  justify-content: space-between;
 }
 
-.user-setting h1 {
+.user-setting h1.hiden {
   font-size: 2.5em;
   font-weight: 500;
-  margin-right: 61px;
+  opacity: 0;
+  width: 0px;
+  transition: 1s;
+}
+
+.user-setting h1.show {
+  transition: 1s;
+  width: 233px;
+  font-size: 2.5em;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInDown 1.4s forwards;
 }
 
 .user-setting button {
@@ -731,7 +749,8 @@ footer img {
   transform: rotate(200deg);
 }
 
-.setting {
+.setting.open {
+  overflow: hidden;
   position: absolute;
   top: 0;
   right: 0;
@@ -745,6 +764,13 @@ footer img {
   border-left: 1px solid var(--color-button);
   border-top: 1px solid var(--color-button);
   z-index: 1;
+  transition: 0.5s;
+}
+
+.setting.close {
+  width: 1px;
+  height: 1px;
+  transition: 0.5s;
 }
 
 .setting h2 {
@@ -755,6 +781,9 @@ footer img {
   transition: 0.5s;
   font-weight: 400;
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInDown 1.4s forwards;
 }
 
 .setting h2:hover {
@@ -772,7 +801,7 @@ footer img {
   min-width: 443px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 10px 0;
   opacity: 0;
   transform: translateY(-20px);
@@ -781,16 +810,18 @@ footer img {
 }
 
 .date.close {
-  width: 26vw;
-  min-width: 350px;
+  width: 20vw;
+  min-width: 304px;
 }
+
 .date.close h2 {
-  font-size: 1.5em;
+  transition: 0.5s;
+  font-size: 1.2em;
 }
 
 .date h2 {
-  transition: 0.5s;
-  font-size: 2em;
+  transition: 1s;
+  font-size: 1.9em;
   font-weight: 500;
 }
 
@@ -801,21 +832,26 @@ footer img {
 
 .icons-calendar {
   display: flex;
-  margin-left: 1vw;
 }
 
 .icons-calendar button {
   font-size: 1.7em;
-  margin-left: 18px;
+  margin-left: 12px;
   width: 70px;
   height: 35px;
+}
+
+.date.close .icons-calendar button {
+  font-size: 1.3em;
+  width: 54px;
+  height: 30px;
 }
 
 .days-of-week {
   width: 32vw;
   min-width: 443px;
   display: grid;
-  grid-template-columns: repeat(7, 14%);
+  grid-template-columns: repeat(7, 13%);
   height: 64px;
   border-radius: 5px;
   align-items: center;
@@ -827,15 +863,15 @@ footer img {
 }
 
 .days-of-week.close {
-  min-width: 350px;
-  width: 26vw;
+  min-width: 298px;
+  width: 20vw;
 }
 
 .days-of-week h2 {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: 400;
 }
 
@@ -844,11 +880,10 @@ footer img {
   min-width: 443px;
   overflow: hidden;
   display: grid;
-
   height: 396px;
-  gap: 0.6% 0.6%;
-  grid-template-columns: repeat(7, 13.7%);
-  grid-template-rows: repeat(6, 16%);
+  gap: 1% 1%;
+  grid-template-columns: repeat(7, 13.4%);
+  grid-template-rows: repeat(6, 15.7%);
   opacity: 0;
   transform: translateY(-20px);
   animation: fadeInDown 1.7s forwards;
@@ -856,9 +891,9 @@ footer img {
 }
 
 .days.close {
-  min-width: 350px;
-  width: 26vw;
-  height: 266px;
+  min-width: 301px;
+  width: 20vw;
+  height: 233px;
 }
 
 .days.close .icon-task-have svg {
@@ -934,7 +969,6 @@ footer img {
   align-items: center;
   margin: 1%;
   overflow: visible;
-  min-height: 70px;
   border-bottom: 3px solid #51504f47;
   opacity: 0;
   transform: translateY(-20px);
@@ -1051,29 +1085,10 @@ footer img {
 }
 
 .cont-tasks h2 {
-  margin: 0 11px;
   width: 89%;
   font-size: 1.4em;
   font-weight: 400;
-  height: 36px;
-  overflow-y: auto;
-}
-
-.cont-tasks h2::-webkit-scrollbar {
-  width: 0.4vw;
-}
-
-.cont-tasks h2::-webkit-scrollbar-track {
-  background: #f1f1f104;
-}
-
-.cont-tasks h2::-webkit-scrollbar-thumb {
-  background: #222d28bd;
-  cursor: pointer;
-}
-
-.cont-tasks h2::-webkit-scrollbar-thumb:hover {
-  background: #222d28f3;
+  min-height: 50px;
 }
 
 .icons-add-rutine button {
@@ -1085,22 +1100,6 @@ footer img {
 .containers:hover .icons-add-rutine button {
   border-bottom: 0.2vh solid #dad7d7;
   border-right: 0.1vw solid #dad7d7;
-}
-
-.icons-add-rutine button:hover {
-  border: none;
-  border-bottom: 1px solid rgb(25 38 32 / 22%);
-  border-right: 1px solid rgb(25 38 32 / 22%);
-  background: rgba(59, 175, 123, 0.176);
-  color: #222d28f3;
-}
-
-.icons-add-rutine .hover,
-.icons-add-rutine .none:hover {
-  background: rgba(59, 175, 123, 0.176);
-  color: #222d28f3;
-  border-bottom: 1px solid rgb(25 38 32 / 22%);
-  border-right: 1px solid rgb(25 38 32 / 22%);
 }
 
 .icons-add-rutine .hover svg,
@@ -1122,10 +1121,6 @@ footer img {
   border-radius: 5px;
   align-items: center;
   justify-content: center;
-}
-
-.delete:hover svg {
-  color: rgba(41, 87, 66, 0.575);
 }
 
 .containers.next,
@@ -1220,6 +1215,27 @@ footer img {
   transition: ease 1s;
 }
 
+.icons-calendar button:hover,
+.user-setting button:hover,
+.ideas-top button:hover,
+.icons-add-rutine button:hover,
+.create-task .add:hover,
+.welcome-text h2:hover,
+.delete:hover,
+.ideas-cont button:hover,
+.ideas form button:hover,
+.top-day-icons button:hover,
+.title-routine button:hover,
+.next-previous button:hover,
+.create-input:hover,
+.input-create-routine button:hover,
+.first-texto button:hover {
+  color: var(--color-text);
+  background-color: var(--color-button-hover);
+  border-bottom: 2px solid var(--color-text);
+  border-right: 2px solid var(--color-text);
+}
+
 .cont-main-day {
   margin-top: 24px;
   display: flex;
@@ -1239,15 +1255,6 @@ footer img {
   animation: fadeInDown 1s forwards;
 }
 
-.icons-calendar button:hover,
-.welcome-text h2:hover,
-.create-task .add:hover {
-  background: var();
-  color: #222d28f3;
-  border-bottom: 1px solid rgb(25 38 32 / 22%);
-  border-right: 1px solid rgb(25 38 32 / 22%);
-}
-
 .title-left > h1 {
   color: var(--color-text);
   font-size: 2.5em;
@@ -1262,19 +1269,6 @@ footer img {
 .top-day-icons button {
   width: 64px;
   height: 41px;
-}
-
-.top-day-icons button:hover {
-  background: rgba(59, 175, 123, 0.176);
-  color: #222d28f3;
-  border-bottom: 1px solid rgb(25 38 32 / 22%);
-  border-right: 1px solid rgb(25 38 32 / 22%);
-}
-
-.top-day-icons button:hover svg {
-  transition: ease 1s;
-  color: rgba(41, 87, 66, 0.575);
-  transform: translateY(0.2vh);
 }
 
 .top-day-icons button svg {
@@ -1293,7 +1287,7 @@ footer img {
 .hours {
   width: 65vw;
   height: 739px;
-  min-width: 452px;
+  min-width: 885px;
   display: grid;
   grid-template-columns: repeat(4, 24.3%);
   grid-template-rows: repeat(6, 16.3%);
@@ -1474,11 +1468,6 @@ footer img {
   border-right: 0.2vw solid #d5caca;
   transition: 1s ease;
 }
-.day-task-rotuine:hover {
-  background-color: rgba(224, 220, 220, 0.932);
-  border-bottom: 0.3vh solid #746161;
-  border-right: 0.2vw solid #746161;
-}
 
 .day-task-rotuine .icons .icons-add-rutine button {
   width: 3vw;
@@ -1563,7 +1552,6 @@ footer img {
   margin: 0 16px;
 }
 
-.title-routine button:hover,
 .logout button:hover,
 .welcome-text button:hover {
   background: rgb(213, 223, 219);
@@ -1576,10 +1564,6 @@ footer img {
   font-size: 1.5em;
   padding: 0 2%;
   font-weight: 400;
-}
-
-.title-routine button:hover h2 {
-  color: rgba(41, 87, 66, 0.575);
 }
 
 .day-task-rotuine .cont-tasks h2 {
@@ -1661,7 +1645,7 @@ footer img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 40px;
+  margin: 17px 40px;
 }
 
 .steps-info {
@@ -1754,7 +1738,6 @@ footer img {
 
 .selected h1 {
   color: #593434;
-  font-size: 1.8vw;
 }
 
 .selected:hover h1 {
@@ -1787,13 +1770,6 @@ footer img {
   height: 35px;
 }
 
-.create-input:hover {
-  background: rgba(59, 175, 123, 0.176);
-  color: #222d28f3;
-  border-bottom: 1px solid rgb(25 38 32 / 22%);
-  border-right: 1px solid rgb(25 38 32 / 22%);
-}
-
 .create-input svg {
   transition: 1s;
   font-size: 2em;
@@ -1811,6 +1787,7 @@ footer img {
   overflow-wrap: break-word;
   margin-top: 4px;
   border: none;
+  font-size: 1.7em;
   font-weight: 300;
   color: var(--color-text);
 }
@@ -1876,13 +1853,6 @@ footer img {
   height: 3vh;
 }
 
-.create-input.true {
-  background: rgba(59, 175, 123, 0.176);
-  color: #222d28f3;
-  border-bottom: 1px solid rgb(25 38 32 / 22%);
-  border-right: 1px solid rgb(25 38 32 / 22%);
-}
-
 .create-input.true svg {
   transform: rotate(136deg);
 }
@@ -1905,13 +1875,6 @@ footer img {
   animation: fadeInDown 1.3s forwards;
 }
 
-.next-previous button:hover {
-  border-bottom: 2px solid rgb(25 38 32 / 22%);
-  border-right: 2px solid rgb(25 38 32 / 22%);
-  background: rgba(59, 175, 123, 0.176);
-  color: #222d28f3;
-}
-
 .steps {
   margin-top: 44px;
   display: flex;
@@ -1930,7 +1893,7 @@ footer img {
 
 .steps .here {
   font-size: 110px;
-  color: #716969;
+  color: var(--color-task);
 }
 
 .steps-info img {
@@ -1940,7 +1903,7 @@ footer img {
 
 .steps-info h1 {
   margin: 20px 0vw;
-  font-size: 2.4em;
+  font-size: 2.1em;
   font-weight: 400;
 }
 
@@ -2056,7 +2019,8 @@ footer img {
 /* chance ideas */
 
 .ideas.open {
-  height: 300px;
+  height: 344px;
+  max-width: 552px;
 }
 
 .ideas.open .ideas-top .open svg {
@@ -2067,7 +2031,7 @@ footer img {
 
 .ideas-body {
   padding: 7px;
-  height: 196px;
+  height: 259px;
   overflow-y: auto;
   transition: 0.5s;
   margin: 8px;
@@ -2094,7 +2058,7 @@ footer img {
 }
 
 .ideas-body p {
-  min-height: 45px;
+  min-height: 50px;
   font-size: 1.6em;
   max-width: 314px;
 }
@@ -2186,6 +2150,7 @@ footer img {
     display: flex;
     flex-direction: column;
     height: auto;
+    min-width: 452px;
   }
   .img-login {
     display: none;

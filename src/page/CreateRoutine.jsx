@@ -105,7 +105,7 @@ const CreateRoutine = () => {
           {openSFD ? (
             stages === "weekend" ? (
               <div className={`${loading ? "visible" : "on-visible"}`}>
-                <h1>Add information about your {stages} routine :</h1>
+                <h1>Add information about your {stages} routine</h1>
                 <img
                   src={
                     "https://assets-global.website-files.com/64c73d04a946980a4476537e/64d9c64fb20aa28a2850f036_chaotic-good.png"
@@ -114,7 +114,7 @@ const CreateRoutine = () => {
               </div>
             ) : (
               <div className={`${loading ? "visible" : "on-visible"}`}>
-                <h1>Add information about your {stages} routine :</h1>
+                <h1>Add information about your {stages} routine</h1>
                 <img
                   src={
                     "https://assets-global.website-files.com/64c73d04a946980a4476537e/64cd4b0849333dd65b9525a6_coffee.png"
